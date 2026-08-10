@@ -14,6 +14,19 @@ const loginSchema = z.object({
 
 export async function POST(request: Request) {
   try {
+    if (!process.env.AUTH_SECRET) {
+      return json(
+        { error: "Server misconfigured: AUTH_SECRET is missing" },
+        { status: 500 }
+      );
+    }
+    if (!process.env.DATABASE_URL) {
+      return json(
+        { error: "Server misconfigured: DATABASE_URL is missing" },
+        { status: 500 }
+      );
+    }
+
     const body = await request.json();
     const parsed = loginSchema.safeParse(body);
     if (!parsed.success) {
@@ -42,7 +55,14 @@ export async function POST(request: Request) {
     return json({
       data: { id: user.id, email: user.email, name: user.name },
     });
-  } catch {
-    return json({ error: "Login failed" }, { status: 500 });
+  } catch (error) {
+    console.error("Login error:", error);
+    return json(
+      {
+        error: "Login failed",
+        details: error instanceof Error ? error.message : String(error),
+      },
+      { status: 500 }
+    );
   }
 }
