@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model AdminUser {
+  id           String   @id @default(cuid())
+  email        String   @unique
+  passwordHash String
+  name         String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Project {
+  id          String    @id @default(cuid())
+  locale      String    @default("fr")
+  slug        String
+  title       String
+  description String
+  caseStudy   String?
+  category    String    @default("web")
+  featured    Boolean   @default(false)
+  year        String
+  stack       String?
+  imageUrl    String?
+  coverUrl    String?
+  liveUrl     String?
+  repoUrl     String?
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, publishedAt])
+}
+
+model Article {
+  id          String    @id @default(cuid())
+  locale      String    @default("fr")
+  slug        String
+  title       String
+  excerpt     String
+  content     String?
+  category    String    @default("frontend")
+  featured    Boolean   @default(false)
+  readMinutes Int       @default(5)
+  date        String
+  imageUrl    String?
+  coverUrl    String?
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, publishedAt])
+}
+
+model Service {
+  id           String    @id @default(cuid())
+  locale       String    @default("fr")
+  slug         String
+  title        String
+  summary      String
+  tagline      String?
+  overview     String?
+  order        Int       @default(0)
+  tags         String?
+  deliverables String?
+  approach     String?
+  stack        String?
+  idealFor     String?
+  publishedAt  DateTime?
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  @@unique([slug, locale])
+  @@index([locale, order])
+}
+
+model Experience {
+  id          String    @id @default(cuid())
+  locale      String    @default("fr")
+  key         String
+  role        String
+  company     String
+  period      String
+  description String
+  order       Int       @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([key, locale])
+  @@index([locale, order])
+}
+
+model Testimonial {
+  id          String    @id @default(cuid())
+  locale      String    @default("fr")
+  key         String
+  quote       String
+  author      String
+  role        String
+  order       Int       @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([key, locale])
+  @@index([locale, order])
+}
+
+model Education {
+  id          String    @id @default(cuid())
+  locale      String    @default("fr")
+  key         String
+  degree      String
+  school      String
+  period      String
+  description String
+  status      String    @default("completed")
+  highlight   String?
+  order       Int       @default(0)
+  publishedAt DateTime?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@unique([key, locale])
+  @@index([locale, order])
+}
+
+model ContactMessage {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  message   String
+  locale    String   @default("fr")
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([status, createdAt])
+}
