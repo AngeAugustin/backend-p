@@ -6,6 +6,7 @@ import { useMemo, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import type { ResourceConfig } from "@/lib/admin-resources";
+import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import { PageHeader } from "@/components/admin/PageHeader";
 
 type Values = Record<string, unknown>;
@@ -23,6 +24,7 @@ function defaultsFromResource(resource: ResourceConfig, initial?: Values): Value
     }
     if (field.type === "locale") values[field.name] = "fr";
     if (field.type === "publish") values[field.name] = true;
+    if (field.type === "image") values[field.name] = "";
   }
   if (initial) {
     Object.assign(values, initial);
@@ -161,6 +163,23 @@ export function ResourceForm({
                   )}
                 </select>
               </label>
+            );
+          }
+
+          if (field.type === "image") {
+            const folder =
+              resource.key === "projects" || resource.key === "articles"
+                ? resource.key
+                : "misc";
+
+            return (
+              <ImageUploadField
+                key={field.name}
+                label={field.label}
+                value={String(value ?? "")}
+                folder={folder}
+                onChange={(next) => update(field.name, next)}
+              />
             );
           }
 

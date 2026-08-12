@@ -15,7 +15,6 @@ type Body = {
   year: string;
   stack?: string | null;
   imageUrl?: string | null;
-  coverUrl?: string | null;
   liveUrl?: string | null;
   repoUrl?: string | null;
   publishedAt?: string | null;
@@ -41,7 +40,6 @@ const handlers = createAdminCollectionHandlers<Body>({
         year: data.year,
         stack: data.stack ?? null,
         imageUrl: data.imageUrl ?? null,
-        coverUrl: data.coverUrl ?? null,
         liveUrl: data.liveUrl ?? null,
         repoUrl: data.repoUrl ?? null,
         publishedAt: parsePublishedAt(data.publishedAt, data.publish) ?? new Date(),

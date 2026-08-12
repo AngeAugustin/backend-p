@@ -15,7 +15,6 @@ type Body = {
   readMinutes?: number;
   date: string;
   imageUrl?: string | null;
-  coverUrl?: string | null;
   publishedAt?: string | null;
   publish?: boolean;
 };
@@ -39,7 +38,6 @@ const handlers = createAdminCollectionHandlers<Body>({
         readMinutes: data.readMinutes ?? 5,
         date: data.date,
         imageUrl: data.imageUrl ?? null,
-        coverUrl: data.coverUrl ?? null,
         publishedAt: parsePublishedAt(data.publishedAt, data.publish) ?? new Date(),
       },
     }),

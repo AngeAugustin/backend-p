@@ -16,6 +16,9 @@ function formatValue(
   if (fieldType === "checkbox") {
     return value ? "Oui" : "Non";
   }
+  if (fieldType === "image") {
+    return value ? String(value) : "—";
+  }
   if (value === null || value === undefined || value === "") {
     return "—";
   }
@@ -40,10 +43,10 @@ export function ResourceDetail({
     : "";
   const published = Boolean(data.publishedAt);
   const imageUrl =
-    typeof data.coverUrl === "string" && data.coverUrl
-      ? data.coverUrl
-      : typeof data.imageUrl === "string"
-        ? data.imageUrl
+    typeof data.imageUrl === "string" && data.imageUrl
+      ? data.imageUrl
+      : typeof data.coverUrl === "string"
+        ? data.coverUrl
         : null;
 
   return (

@@ -5,7 +5,8 @@ export type FieldType =
   | "checkbox"
   | "select"
   | "locale"
-  | "publish";
+  | "publish"
+  | "image";
 
 export type FieldConfig = {
   name: string;
@@ -87,8 +88,7 @@ export const resources: ResourceConfig[] = [
         type: "textarea",
         rows: 4,
       },
-      { name: "imageUrl", label: "Image URL", type: "text" },
-      { name: "coverUrl", label: "Cover URL", type: "text" },
+      { name: "imageUrl", label: "Image de couverture", type: "image" },
       { name: "liveUrl", label: "Live URL", type: "text" },
       { name: "repoUrl", label: "Repo URL", type: "text" },
       publishField,
@@ -127,8 +127,7 @@ export const resources: ResourceConfig[] = [
       { name: "featured", label: "Mis en avant", type: "checkbox" },
       { name: "readMinutes", label: "Minutes de lecture", type: "number" },
       { name: "date", label: "Date (YYYY-MM)", type: "text", required: true },
-      { name: "imageUrl", label: "Image URL", type: "text" },
-      { name: "coverUrl", label: "Cover URL", type: "text" },
+      { name: "imageUrl", label: "Image de couverture", type: "image" },
       publishField,
     ],
   },

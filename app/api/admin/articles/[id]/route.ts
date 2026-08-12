@@ -15,7 +15,6 @@ type Body = {
   readMinutes?: number;
   date?: string;
   imageUrl?: string | null;
-  coverUrl?: string | null;
   publishedAt?: string | null;
   publish?: boolean;
 };
@@ -38,7 +37,6 @@ const handlers = createAdminItemHandlers<Body>({
           : {}),
         ...(data.date !== undefined ? { date: data.date } : {}),
         ...(data.imageUrl !== undefined ? { imageUrl: data.imageUrl } : {}),
-        ...(data.coverUrl !== undefined ? { coverUrl: data.coverUrl } : {}),
         ...(data.publishedAt !== undefined || data.publish !== undefined
           ? { publishedAt: parsePublishedAt(data.publishedAt, data.publish) }
           : {}),

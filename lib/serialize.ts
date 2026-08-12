@@ -9,7 +9,7 @@ type WithDates = {
 
 export function serializeEntry<T extends WithDates>(entry: T) {
   const { coverUrl, ...rest } = entry;
-  const coverSource = coverUrl || entry.imageUrl || null;
+  const coverSource = rest.imageUrl || coverUrl || null;
   return {
     ...rest,
     publishedAt: entry.publishedAt?.toISOString() ?? null,

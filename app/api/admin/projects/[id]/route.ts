@@ -15,7 +15,6 @@ type Body = {
   year?: string;
   stack?: string | null;
   imageUrl?: string | null;
-  coverUrl?: string | null;
   liveUrl?: string | null;
   repoUrl?: string | null;
   publishedAt?: string | null;
@@ -40,7 +39,6 @@ const handlers = createAdminItemHandlers<Body>({
         ...(data.year !== undefined ? { year: data.year } : {}),
         ...(data.stack !== undefined ? { stack: data.stack } : {}),
         ...(data.imageUrl !== undefined ? { imageUrl: data.imageUrl } : {}),
-        ...(data.coverUrl !== undefined ? { coverUrl: data.coverUrl } : {}),
         ...(data.liveUrl !== undefined ? { liveUrl: data.liveUrl } : {}),
         ...(data.repoUrl !== undefined ? { repoUrl: data.repoUrl } : {}),
         ...(data.publishedAt !== undefined || data.publish !== undefined

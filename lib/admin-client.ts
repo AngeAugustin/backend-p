@@ -20,3 +20,25 @@ export async function adminFetch<T>(
 
   return response.json() as Promise<T>;
 }
+
+export async function adminUpload<T>(
+  path: string,
+  formData: FormData
+): Promise<T> {
+  const response = await fetch(path, {
+    method: "POST",
+    body: formData,
+    credentials: "same-origin",
+  });
+
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    const payload = body as { error?: string; details?: string };
+    throw new Error(
+      payload.details || payload.error || `Upload failed (${response.status})`
+    );
+  }
+
+  const body = (await response.json()) as { data: T };
+  return body.data;
+}
