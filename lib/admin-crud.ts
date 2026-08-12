@@ -107,10 +107,12 @@ export function createAdminItemHandlers<TUpdate>(handlers: ItemHandlers<TUpdate>
 }
 
 export function parsePublishedAt(value: unknown, publish?: boolean) {
-  if (value === null) return null;
+  if (publish === true) {
+    if (typeof value === "string" && value) return new Date(value);
+    return new Date();
+  }
+  if (publish === false || value === null) return null;
   if (typeof value === "string" && value) return new Date(value);
-  if (publish === true) return new Date();
-  if (publish === false) return null;
   return undefined;
 }
 

@@ -65,7 +65,11 @@ export function ResourceForm({
 
     const payload: Values = { ...values };
     payload.publish = Boolean(values.publish);
-    if (!payload.publish) payload.publishedAt = null;
+    if (payload.publish) {
+      delete payload.publishedAt;
+    } else {
+      payload.publishedAt = null;
+    }
 
     try {
       if (id) {
