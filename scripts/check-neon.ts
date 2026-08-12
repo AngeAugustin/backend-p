@@ -1,13 +1,19 @@
+import { config } from "dotenv";
 import { Client } from "pg";
 
-const url =
-  process.env.DATABASE_URL ||
-  "postgresql://neondb_owner:npg_1bItRVmPdgk7@ep-falling-wildflower-au3ypauj-pooler.c-10.us-east-1.aws.neon.tech/neondb?sslmode=require";
+config({ path: ".env" });
+
+const url = process.env.DATABASE_URL;
 
 async function main() {
+  if (!url) {
+    console.error("❌ DATABASE_URL is not set. Add it to .env or export it.");
+    process.exit(1);
+  }
+
   const client = new Client({
     connectionString: url,
-    ssl: { rejectUnauthorized: false },
+    ssl: url.includes("neon.tech") ? { rejectUnauthorized: false } : undefined,
   });
   await client.connect();
 
@@ -19,7 +25,7 @@ async function main() {
   `);
 
   const admins = await client.query(
-    `SELECT id, email, "createdAt" FROM "AdminUser" LIMIT 5`
+    `SELECT id, email, "createdAt" FROM "AdminUser" LIMIT 5`,
   );
   const counts = await client.query(`
     SELECT
