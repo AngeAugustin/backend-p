@@ -12,7 +12,7 @@ export function corsHeaders(origin?: string | null) {
   return {
     "Access-Control-Allow-Origin": allow ? requestOrigin : allowed,
     "Access-Control-Allow-Methods": "GET,POST,PUT,PATCH,DELETE,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization, Accept",
     "Access-Control-Allow-Credentials": "true",
   };
 }

@@ -12,13 +12,18 @@
     "db:seed": "tsx prisma/seed.ts",
     "db:ensure": "tsx scripts/ensure-postgres-db.ts",
     "db:import": "tsx scripts/import-postgres.ts",
-    "db:setup": "npm run db:ensure && prisma db push && tsx prisma/seed.ts"
+    "db:setup": "npm run db:ensure && prisma db push && tsx prisma/seed.ts",
+    "test:supabase": "tsx scripts/test-supabase.ts",
+    "ingest": "tsx scripts/ingest.ts",
+    "eval:rag": "tsx scripts/eval-rag.ts"
   },
   "prisma": {
     "seed": "tsx prisma/seed.ts"
   },
   "dependencies": {
+    "@google/genai": "^2.16.0",
     "@prisma/client": "^6.19.3",
+    "@supabase/supabase-js": "^2.112.3",
     "bcryptjs": "^3.0.3",
     "clsx": "^2.1.1",
     "jose": "^6.2.8",
