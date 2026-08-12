@@ -113,3 +113,31 @@ export function parsePublishedAt(value: unknown, publish?: boolean) {
   if (publish === false) return null;
   return undefined;
 }
+
+export function createAdminDuplicateHandler(
+  duplicate: (id: string) => Promise<{ id: string } | null>
+) {
+  return async (
+    _request: Request,
+    context: { params: Promise<{ id: string }> }
+  ) => {
+    const admin = await requireAdmin();
+    if (!admin) return json({ error: "Unauthorized" }, { status: 401 });
+
+    const { id } = await context.params;
+
+    try {
+      const created = await duplicate(id);
+      if (!created) return json({ error: "Not found" }, { status: 404 });
+      return json({ data: created }, { status: 201 });
+    } catch (error) {
+      return json(
+        {
+          error: "Duplicate failed",
+          details: error instanceof Error ? error.message : String(error),
+        },
+        { status: 400 }
+      );
+    }
+  };
+}

@@ -25,6 +25,7 @@ export type ResourceConfig = {
   apiPath: string;
   titleField: string;
   subtitleField?: string;
+  duplicable?: boolean;
   fields: FieldConfig[];
 };
 
@@ -49,6 +50,7 @@ export const resources: ResourceConfig[] = [
     apiPath: "/api/admin/projects",
     titleField: "title",
     subtitleField: "slug",
+    duplicable: true,
     fields: [
       localeField,
       { name: "slug", label: "Slug", type: "text", required: true },
@@ -101,6 +103,7 @@ export const resources: ResourceConfig[] = [
     apiPath: "/api/admin/articles",
     titleField: "title",
     subtitleField: "slug",
+    duplicable: true,
     fields: [
       localeField,
       { name: "slug", label: "Slug", type: "text", required: true },
@@ -187,6 +190,7 @@ export const resources: ResourceConfig[] = [
     apiPath: "/api/admin/experiences",
     titleField: "role",
     subtitleField: "company",
+    duplicable: true,
     fields: [
       localeField,
       { name: "key", label: "Clé", type: "text", required: true },
@@ -229,6 +233,7 @@ export const resources: ResourceConfig[] = [
     apiPath: "/api/admin/educations",
     titleField: "degree",
     subtitleField: "school",
+    duplicable: true,
     fields: [
       localeField,
       { name: "key", label: "Clé", type: "text", required: true },

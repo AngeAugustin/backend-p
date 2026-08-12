@@ -6,6 +6,7 @@ import { Eye, Pencil, Plus, Trash2 } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import type { ResourceConfig } from "@/lib/admin-resources";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import { DuplicateResourceButton } from "@/components/admin/DuplicateResourceButton";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { cn } from "@/lib/utils";
 
@@ -190,6 +191,13 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
                         <Pencil className="size-3.5" />
                         Éditer
                       </Link>
+                      {resource.duplicable ? (
+                        <DuplicateResourceButton
+                          resource={resource}
+                          id={row.id}
+                          compact
+                        />
+                      ) : null}
                       <button
                         type="button"
                         onClick={() => setDeleteTarget(row)}

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowLeft, Pencil } from "lucide-react";
+import { DuplicateResourceButton } from "@/components/admin/DuplicateResourceButton";
 import type { ResourceConfig } from "@/lib/admin-resources";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { cn } from "@/lib/utils";
@@ -74,6 +75,7 @@ export function ResourceDetail({
               <Pencil className="size-4" />
               Éditer
             </Link>
+            <DuplicateResourceButton resource={resource} id={id} />
           </div>
         }
       />
