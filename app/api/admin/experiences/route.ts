@@ -9,6 +9,7 @@ type Body = {
   key: string;
   role: string;
   company: string;
+  location?: string | null;
   period: string;
   description: string;
   order?: number;
@@ -29,6 +30,7 @@ const handlers = createAdminCollectionHandlers<Body>({
         key: data.key,
         role: data.role,
         company: data.company,
+        location: data.location ?? null,
         period: data.period,
         description: data.description,
         order: data.order ?? 0,

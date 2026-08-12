@@ -9,6 +9,7 @@ type Body = {
   key?: string;
   role?: string;
   company?: string;
+  location?: string | null;
   period?: string;
   description?: string;
   order?: number;
@@ -26,6 +27,7 @@ const handlers = createAdminItemHandlers<Body>({
         ...(data.key !== undefined ? { key: data.key } : {}),
         ...(data.role !== undefined ? { role: data.role } : {}),
         ...(data.company !== undefined ? { company: data.company } : {}),
+        ...(data.location !== undefined ? { location: data.location } : {}),
         ...(data.period !== undefined ? { period: data.period } : {}),
         ...(data.description !== undefined
           ? { description: data.description }

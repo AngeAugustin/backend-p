@@ -126,6 +126,7 @@ async function main() {
         key: String(row.key),
         role: String(row.role),
         company: String(row.company),
+        location: row.location ? String(row.location) : null,
         period: String(row.period),
         description: String(row.description),
         order: Number(row.order || 0),

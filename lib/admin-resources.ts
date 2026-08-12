@@ -192,6 +192,7 @@ export const resources: ResourceConfig[] = [
       { name: "key", label: "Clé", type: "text", required: true },
       { name: "role", label: "Rôle", type: "text", required: true },
       { name: "company", label: "Entreprise", type: "text", required: true },
+      { name: "location", label: "Localisation", type: "text" },
       { name: "period", label: "Période", type: "text", required: true },
       {
         name: "description",

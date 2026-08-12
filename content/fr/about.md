@@ -16,7 +16,7 @@ Je suis Développeur FullStack et Ingénieur IA béninois avec plus de 3 ans d'e
 
 Mon travail couvre l'automatisation intelligente, les plateformes API, les produits SaaS et les tableaux de bord analytiques — toujours avec un focus sur la performance, l'accessibilité et une UX élégante.
 
-Je suis en transition active vers le Data Engineering, approfondissant mon expertise en pipelines, entrepôts de données et infrastructure ML.
+Je suis en transition active vers l'ingénierie IA et le Data Engineering, en approfondissant mes compétences en systèmes intelligents, pipelines de données, Machine learning, Data mining, LLM, RAG, IA et Intégration.
 
 ## Parcours professionnel
 

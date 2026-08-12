@@ -115,6 +115,7 @@ async function upsertLocales() {
         update: {
           role: String(localized.role || ""),
           company: String(experience.company || localized.company || ""),
+          location: experience.location ? String(experience.location) : null,
           period: String(localized.period || ""),
           description: String(localized.description || ""),
           order: Number(experience.order || 0),
@@ -125,6 +126,7 @@ async function upsertLocales() {
           locale,
           role: String(localized.role || ""),
           company: String(experience.company || localized.company || ""),
+          location: experience.location ? String(experience.location) : null,
           period: String(localized.period || ""),
           description: String(localized.description || ""),
           order: Number(experience.order || 0),

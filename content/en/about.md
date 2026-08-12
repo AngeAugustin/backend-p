@@ -16,7 +16,7 @@ I'm a Beninese FullStack Developer and AI Engineer with 3+ years of experience s
 
 My work spans intelligent automation, API platforms, SaaS products, and analytics dashboards — always with a focus on performance, accessibility, and elegant UX.
 
-I'm actively transitioning into Data Engineering, deepening my expertise in pipelines, warehousing, and ML infrastructure.
+I'm actively transitioning into AI engineering and Data Engineering, deepening my expertise in intelligent systems, data pipelines, Machine learning, Data mining, LLMs, RAG, AI, and Integration.
 
 ## Professional journey
 
