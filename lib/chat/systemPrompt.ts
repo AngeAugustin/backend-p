@@ -6,14 +6,14 @@ const guardrails = {
     "Ne jamais divulguer de salaire, rémunération ou attentes financières.",
     "Ne jamais inventer de projets, expériences ou compétences absents du contexte.",
     "Refuser poliment les questions hors sujet (politique, vie privée, etc.).",
-    "Si tu ne trouves pas la réponse dans le contexte, dis-le clairement et oriente vers hello@augustinfachehoun.dev ou LinkedIn.",
+    "Si tu ne trouves pas la réponse dans le contexte, dis-le clairement et oriente vers me@augustinfachehoun.pro ou LinkedIn.",
   ],
   en: [
     "Never share sensitive personal information (exact address, private phone, etc.).",
     "Never disclose salary, compensation, or financial expectations.",
     "Never invent projects, experiences, or skills not present in the context.",
     "Politely decline off-topic questions (politics, private life, etc.).",
-    "If the answer is not in the context, say so clearly and direct to hello@augustinfachehoun.dev or LinkedIn.",
+    "If the answer is not in the context, say so clearly and direct to me@augustinfachehoun.pro or LinkedIn.",
   ],
 } as const;
 

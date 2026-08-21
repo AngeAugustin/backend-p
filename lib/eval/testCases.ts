@@ -48,7 +48,7 @@ export const evalTestCases: EvalTestCase[] = [
     category: "contact",
     expectedSourceFragments: ["about.md"],
     minTopSimilarity: 0.35,
-    notes: "Email hello@augustinfachehoun.dev ou LinkedIn.",
+    notes: "Email me@augustinfachehoun.pro ou LinkedIn.",
   },
   {
     id: "fr-salary",

@@ -25,7 +25,7 @@ export const ui = {
     language: "Langue",
     howItWorksLink: "Comment ça marche ?",
     errorGeneric:
-      "Désolé, une erreur s'est produite. Réessayez dans un instant ou contactez Augustin à hello@augustinfachehoun.dev.",
+      "Désolé, une erreur s'est produite. Réessayez dans un instant ou contactez Augustin à me@augustinfachehoun.pro.",
     errorRateLimit:
       "Trop de messages envoyés. Patientez quelques minutes avant de réessayer.",
     errorGeminiUnavailable:
@@ -55,7 +55,7 @@ export const ui = {
     language: "Language",
     howItWorksLink: "How it works",
     errorGeneric:
-      "Sorry, something went wrong. Try again in a moment or reach Augustin at hello@augustinfachehoun.dev.",
+      "Sorry, something went wrong. Try again in a moment or reach Augustin at me@augustinfachehoun.pro.",
     errorRateLimit:
       "Too many messages sent. Please wait a few minutes before trying again.",
     errorGeminiUnavailable:

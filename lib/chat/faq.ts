@@ -92,8 +92,8 @@ async function buildContactReply(locale: Locale): Promise<string> {
   const about = files.find((file) => file.source.endsWith(`${locale}/about.md`));
   const { frontmatter } = parseFrontmatter(about?.raw ?? "");
 
-  const email = frontmatter.email ?? "hello@augustinfachehoun.dev";
-  const website = frontmatter.website ?? "https://augustinfachehoun.dev";
+  const email = frontmatter.email ?? "me@augustinfachehoun.pro";
+  const website = frontmatter.website ?? "https://augustinfachehoun.pro";
   const github = frontmatter.github ?? "https://github.com/AngeAugustin";
   const linkedin =
     frontmatter.linkedin ??
