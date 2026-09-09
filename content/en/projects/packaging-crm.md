@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "packaging-crm"
-title: "Packaging Sales CRM — Freelance Benin"
+title: "Packaging Sales CRM - Freelance Benin"
 description: "Web CRM to centralize sales, appointments, deliveries, support, and commercial follow-up, also packaged as an Electron desktop app."
 category: "saas"
 featured: true
@@ -15,7 +15,7 @@ stack:
   - "API REST"
 image: "/images/projects/insight-saas.svg"
 ---
-# Packaging Sales CRM — Freelance Benin
+# Packaging Sales CRM - Freelance Benin
 
 Web CRM to centralize sales, appointments, deliveries, support, and commercial follow-up, also packaged as an Electron desktop app.
 

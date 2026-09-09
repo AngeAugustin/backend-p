@@ -46,11 +46,16 @@ Une boîte à outils multidisciplinaire pour construire des produits digitaux mo
 | FastAPI | Intermédiaire |
 | Symfony | Expert |
 | Spring Boot | Intermédiaire |
+| Postman | Expert |
+
+### Base de données
+
+| Compétence | Niveau |
+|-----------|-------|
 | PostgreSQL | Avancé |
 | MySQL | Expert |
 | MongoDB | Avancé |
 | Redis | Intermédiaire |
-| Postman | Expert |
 
 ### IA & ML
 

@@ -149,7 +149,7 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
                       className="group block"
                     >
                       <div className="font-medium text-foreground group-hover:text-glow">
-                        {String(row[resource.titleField] ?? "—")}
+                        {String(row[resource.titleField] ?? "-")}
                       </div>
                       {resource.subtitleField ? (
                         <div className="mt-0.5 text-xs text-muted-foreground">

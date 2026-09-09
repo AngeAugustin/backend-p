@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "dncf-personnel-transfers"
-title: "Gestion des mutations de personnel — DNCF Bénin"
+title: "Gestion des mutations de personnel - DNCF Bénin"
 description: "Application web pour gérer les mutations de personnel de bout en bout à la Direction Nationale du Contrôle Financier."
 category: "web"
 featured: false
@@ -12,7 +12,7 @@ stack:
   - "MongoDB"
 image: "/images/projects/agri-dashboard.svg"
 ---
-# Gestion des mutations de personnel — DNCF Bénin
+# Gestion des mutations de personnel - DNCF Bénin
 
 Application web pour gérer les mutations de personnel de bout en bout à la Direction Nationale du Contrôle Financier.
 

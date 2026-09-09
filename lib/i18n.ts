@@ -15,7 +15,7 @@ export const ui = {
     assistantRole: "Assistant IA",
     justNow: "À l'instant",
     welcome:
-      "👋 Bonjour ! Je suis Kadoukpè, l'assistant d'Augustin. Posez-moi toutes vos questions.",
+      "👋 Bonjour ! Je suis Kadoukpè. Posez-moi vos questions sur mon parcours, mes projets et ma stack.",
     placeholder: "Écrivez votre message…",
     send: "Envoyer",
     typing: "Réflexion en cours…",
@@ -45,7 +45,7 @@ export const ui = {
     assistantRole: "AI Assistant",
     justNow: "Just now",
     welcome:
-      "👋 Hello! I'm Kadoukpè, Augustin's assistant. Ask me anything.",
+      "👋 Hello! I'm Kadoukpè. Ask me about my background, projects, and stack.",
     placeholder: "Type your message…",
     send: "Send",
     typing: "Thinking…",

@@ -18,10 +18,10 @@ function formatValue(
     return value ? "Oui" : "Non";
   }
   if (fieldType === "image") {
-    return value ? String(value) : "—";
+    return value ? String(value) : "-";
   }
   if (value === null || value === undefined || value === "") {
-    return "—";
+    return "-";
   }
   if (typeof value === "boolean") {
     return value ? "Oui" : "Non";
@@ -82,7 +82,7 @@ export function ResourceDetail({
 
       <div className="mb-6 flex flex-wrap items-center gap-2">
         <span className="rounded-full bg-muted px-3 py-1 text-xs font-medium uppercase tracking-wide text-muted-foreground">
-          {String(data.locale ?? "—")}
+          {String(data.locale ?? "-")}
         </span>
         <span
           className={cn(
@@ -159,7 +159,7 @@ export function ResourceDetail({
               <dd className="mt-1 font-medium">
                 {data.createdAt
                   ? new Date(String(data.createdAt)).toLocaleString("fr-FR")
-                  : "—"}
+                  : "-"}
               </dd>
             </div>
             <div>
@@ -167,7 +167,7 @@ export function ResourceDetail({
               <dd className="mt-1 font-medium">
                 {data.updatedAt
                   ? new Date(String(data.updatedAt)).toLocaleString("fr-FR")
-                  : "—"}
+                  : "-"}
               </dd>
             </div>
           </dl>

@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "tutoring-platform"
-title: "Tutoring Management Platform — Freelance Benin"
+title: "Tutoring Management Platform - Freelance Benin"
 description: "Web and mobile platform helping parents find and hire full-time or on-demand tutors for their children."
 category: "saas"
 featured: true
@@ -16,7 +16,7 @@ stack:
 image: "/images/projects/neural-commerce.svg"
 liveUrl: "https://play.google.com/store"
 ---
-# Tutoring Management Platform — Freelance Benin
+# Tutoring Management Platform - Freelance Benin
 
 Web and mobile platform helping parents find and hire full-time or on-demand tutors for their children.
 

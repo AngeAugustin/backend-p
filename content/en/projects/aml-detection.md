@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "aml-detection"
-title: "AML Suspicious Transaction Detection — Govern Group"
+title: "AML Suspicious Transaction Detection - Govern Group"
 description: "Machine Learning AML engine to detect suspicious patterns in Core Banking transaction flows."
 category: "ai"
 featured: true
@@ -13,7 +13,7 @@ stack:
   - "API REST"
 image: "/images/projects/neural-commerce.svg"
 ---
-# AML Suspicious Transaction Detection — Govern Group
+# AML Suspicious Transaction Detection - Govern Group
 
 Machine Learning AML engine to detect suspicious patterns in Core Banking transaction flows.
 

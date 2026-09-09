@@ -114,7 +114,7 @@ export function ImageUploadField({
         <p className="mt-2 text-xs text-destructive">{error}</p>
       ) : (
         <p className="mt-2 text-xs text-muted-foreground">
-          JPEG, PNG, WebP, GIF ou SVG — max. 5 Mo
+          JPEG, PNG, WebP, GIF ou SVG - max. 5 Mo
         </p>
       )}
     </div>

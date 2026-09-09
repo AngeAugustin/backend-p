@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 
+import { getFaqReply } from "@/lib/chat/faq";
 import { getSalaryRefusal, isSalaryQuestion, sanitizeAssistantReply } from "@/lib/chat/guardrails";
 import { buildSystemPrompt } from "@/lib/chat/systemPrompt";
 import { chatRequestSchema } from "@/lib/chat/validation";
@@ -53,6 +54,38 @@ function chatResponseHeaders(
     ...corsHeaders(origin),
     ...extra,
   };
+}
+
+function wantsStreaming(request: Request): boolean {
+  const acceptHeader = request.headers.get("accept") ?? "";
+  return (
+    acceptHeader.includes("text/plain") ||
+    acceptHeader.includes("text/event-stream")
+  );
+}
+
+function faqResponse(
+  reply: string,
+  origin: string | null,
+  remaining: number,
+  stream: boolean,
+) {
+  const headers = chatResponseHeaders(origin, {
+    "X-RateLimit-Remaining": String(remaining),
+    "X-Chat-Mode": "faq",
+  });
+
+  if (stream) {
+    return new Response(reply, {
+      headers: {
+        ...headers,
+        "Content-Type": "text/plain; charset=utf-8",
+        "Cache-Control": "no-cache",
+      },
+    });
+  }
+
+  return NextResponse.json({ reply }, { headers });
 }
 
 export async function OPTIONS(request: Request) {
@@ -127,22 +160,29 @@ export async function POST(request: Request) {
       );
     }
 
+    const faqReply = await getFaqReply(locale, lastUserMessage);
+    if (faqReply) {
+      return faqResponse(
+        faqReply,
+        origin,
+        rateLimit.remaining,
+        wantsStreaming(request),
+      );
+    }
+
     const { systemPrompt, mode } = await buildPromptForRequest(
       locale,
       lastUserMessage,
     );
 
-    const acceptHeader = request.headers.get("accept") ?? "";
-    const wantsStream =
-      acceptHeader.includes("text/plain") ||
-      acceptHeader.includes("text/event-stream");
+    const stream = wantsStreaming(request);
 
     const responseHeaders = chatResponseHeaders(origin, {
       "X-RateLimit-Remaining": String(rateLimit.remaining),
       "X-Chat-Mode": mode,
     });
 
-    if (!wantsStream) {
+    if (!stream) {
       const rawReply = await generateChatReply(systemPrompt, messages);
       const reply = sanitizeAssistantReply(rawReply, locale);
 
@@ -151,7 +191,7 @@ export async function POST(request: Request) {
 
     const encoder = new TextEncoder();
 
-    const stream = new ReadableStream({
+    const readable = new ReadableStream({
       async start(controller) {
         try {
           for await (const chunk of streamChatReply(systemPrompt, messages)) {
@@ -164,7 +204,7 @@ export async function POST(request: Request) {
       },
     });
 
-    return new Response(stream, {
+    return new Response(readable, {
       headers: {
         ...responseHeaders,
         "Content-Type": "text/plain; charset=utf-8",

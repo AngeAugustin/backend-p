@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "grc-saas"
-title: "SaaS Gouvernance, Risques et Conformité (GRC) — Govern Group"
+title: "SaaS Gouvernance, Risques et Conformité (GRC) - Govern Group"
 description: "SaaS GRC couvrant normes, obligations CEDEAO-CEMAC, LCB-FT-FP et gestion des risques, avec assistance IA."
 category: "saas"
 featured: true
@@ -15,7 +15,7 @@ stack:
   - "Intelligence Artificielle"
 image: "/images/projects/insight-saas.svg"
 ---
-# SaaS Gouvernance, Risques et Conformité (GRC) — Govern Group
+# SaaS Gouvernance, Risques et Conformité (GRC) - Govern Group
 
 SaaS GRC couvrant normes, obligations CEDEAO-CEMAC, LCB-FT-FP et gestion des risques, avec assistance IA.
 

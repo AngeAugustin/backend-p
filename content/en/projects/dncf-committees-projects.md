@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "dncf-committees-projects"
-title: "Committees & Project Tracking — DNCF Benin"
+title: "Committees & Project Tracking - DNCF Benin"
 description: "Platform to centralize management committees and project follow-up at DNCF."
 category: "dashboard"
 featured: false
@@ -12,7 +12,7 @@ stack:
   - "MongoDB"
 image: "/images/projects/dataflow-pipeline.svg"
 ---
-# Committees & Project Tracking — DNCF Benin
+# Committees & Project Tracking - DNCF Benin
 
 Platform to centralize management committees and project follow-up at DNCF.
 

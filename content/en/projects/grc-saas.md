@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "grc-saas"
-title: "Governance, Risk & Compliance SaaS — Govern Group"
+title: "Governance, Risk & Compliance SaaS - Govern Group"
 description: "GRC SaaS covering standards, ECOWAS-CEMAC obligations, AML/CFT, and risk management, with AI assistance."
 category: "saas"
 featured: true
@@ -15,7 +15,7 @@ stack:
   - "Intelligence Artificielle"
 image: "/images/projects/insight-saas.svg"
 ---
-# Governance, Risk & Compliance SaaS — Govern Group
+# Governance, Risk & Compliance SaaS - Govern Group
 
 GRC SaaS covering standards, ECOWAS-CEMAC obligations, AML/CFT, and risk management, with AI assistance.
 

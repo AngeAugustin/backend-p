@@ -4,8 +4,8 @@ const salaryPattern =
   /(\d[\d\s.,]*\s*(€|\$|USD|EUR|FCFA|XOF|k€)|salaire\s*(de|à|:)?\s*\d|rémunération\s*(de|à|:)?\s*\d|(\d+\s*)?(euros?|dollars?)\s*(par\s*(an|mois|year|month)))/i;
 
 const refusal = {
-  fr: "Je ne peux pas partager d'informations sur la rémunération. Pour discuter d'une opportunité professionnelle, contactez Augustin à me@augustinfachehoun.pro.",
-  en: "I can't share compensation details. For professional opportunities, please contact Augustin at me@augustinfachehoun.pro.",
+  fr: "Je ne peux pas partager d'informations sur la rémunération. Pour discuter d'une opportunité professionnelle, écrivez-moi à me@augustinfachehoun.pro.",
+  en: "I can't share compensation details. For professional opportunities, email me at me@augustinfachehoun.pro.",
 } as const;
 
 export function sanitizeAssistantReply(content: string, locale: Locale): string {

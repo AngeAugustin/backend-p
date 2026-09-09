@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "packaging-crm"
-title: "CRM de gestion des ventes de packaging — Freelance Bénin"
+title: "CRM de gestion des ventes de packaging - Freelance Bénin"
 description: "CRM web pour centraliser ventes, rendez-vous, livraisons, support client et suivi commercial, aussi packagé en desktop Electron."
 category: "saas"
 featured: true
@@ -15,7 +15,7 @@ stack:
   - "API REST"
 image: "/images/projects/insight-saas.svg"
 ---
-# CRM de gestion des ventes de packaging — Freelance Bénin
+# CRM de gestion des ventes de packaging - Freelance Bénin
 
 CRM web pour centraliser ventes, rendez-vous, livraisons, support client et suivi commercial, aussi packagé en desktop Electron.
 

@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "aml-detection"
-title: "Système AML de détection des transactions suspectes — Govern Group"
+title: "Système AML de détection des transactions suspectes - Govern Group"
 description: "Moteur AML en Machine Learning pour détecter des schémas suspects dans les flux d’un Core Banking."
 category: "ai"
 featured: true
@@ -13,7 +13,7 @@ stack:
   - "API REST"
 image: "/images/projects/neural-commerce.svg"
 ---
-# Système AML de détection des transactions suspectes — Govern Group
+# Système AML de détection des transactions suspectes - Govern Group
 
 Moteur AML en Machine Learning pour détecter des schémas suspects dans les flux d’un Core Banking.
 

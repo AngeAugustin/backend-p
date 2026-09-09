@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 import { prisma } from "@/lib/prisma";
 import { PageHeader } from "@/components/admin/PageHeader";
+import { ReindexRagButton } from "@/components/admin/ReindexRagButton";
 import {
   MessagesEvolutionChart,
   type MessagesByMonthPoint,
@@ -201,6 +202,10 @@ export default async function AdminDashboardPage() {
         title="Dashboard"
         description="Vue d’ensemble des contenus publiés via l’API portfolio."
       />
+
+      <div className="mb-4">
+        <ReindexRagButton />
+      </div>
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
         {cards.map((card, index) => (

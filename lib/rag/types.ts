@@ -6,7 +6,16 @@ export interface ChunkMetadata {
   locale: Locale;
   source: string;
   section: string;
-  type: "about" | "skills" | "project" | "faq" | "unknown";
+  type:
+    | "about"
+    | "skills"
+    | "project"
+    | "faq"
+    | "experience"
+    | "education"
+    | "service"
+    | "article"
+    | "unknown";
 }
 
 export interface DocumentChunkRow {

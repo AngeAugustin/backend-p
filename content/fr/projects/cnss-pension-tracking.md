@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "cnss-pension-tracking"
-title: "Suivi des dossiers de pension — CNSS Bénin"
+title: "Suivi des dossiers de pension - CNSS Bénin"
 description: "Application web de suivi des dossiers de pension à la CNSS Bénin, avec architecture frontend/backend et API REST."
 category: "web"
 featured: true
@@ -14,7 +14,7 @@ stack:
   - "API REST"
 image: "/images/projects/dataflow-pipeline.svg"
 ---
-# Suivi des dossiers de pension — CNSS Bénin
+# Suivi des dossiers de pension - CNSS Bénin
 
 Application web de suivi des dossiers de pension à la CNSS Bénin, avec architecture frontend/backend et API REST.
 

@@ -46,11 +46,16 @@ A multidisciplinary toolkit for building modern digital products.
 | FastAPI | Intermediate |
 | Symfony | Expert |
 | Spring Boot | Intermediate |
+| Postman | Expert |
+
+### Databases
+
+| Skill | Level |
+|-----------|-------|
 | PostgreSQL | Advanced |
 | MySQL | Expert |
 | MongoDB | Advanced |
 | Redis | Intermediate |
-| Postman | Expert |
 
 ### AI & ML
 

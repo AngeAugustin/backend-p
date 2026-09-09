@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "grc-landing"
-title: "Landing Page SaaS GRC — Govern Group"
+title: "Landing Page SaaS GRC - Govern Group"
 description: "Site vitrine du SaaS GRC présentant fonctionnalités, roadmap et assistance conversationnelle IA."
 category: "web"
 featured: false
@@ -15,7 +15,7 @@ stack:
   - "Intelligence Artificielle"
 image: "/images/projects/agri-dashboard.svg"
 ---
-# Landing Page SaaS GRC — Govern Group
+# Landing Page SaaS GRC - Govern Group
 
 Site vitrine du SaaS GRC présentant fonctionnalités, roadmap et assistance conversationnelle IA.
 

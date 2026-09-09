@@ -17,6 +17,10 @@ const VALID_TYPES = new Set<ChunkMetadata["type"]>([
   "skills",
   "project",
   "faq",
+  "experience",
+  "education",
+  "service",
+  "article",
   "unknown",
 ]);
 
@@ -30,6 +34,10 @@ function inferContentType(
   }
 
   if (source.includes("/projects/")) return "project";
+  if (source.includes("/experiences/")) return "experience";
+  if (source.includes("/educations/")) return "education";
+  if (source.includes("/services/")) return "service";
+  if (source.includes("/articles/")) return "article";
   if (source.endsWith("/about.md") || source.endsWith("about.md")) return "about";
   if (source.endsWith("/skills.md") || source.endsWith("skills.md")) return "skills";
   if (source.endsWith("/faq.md") || source.endsWith("faq.md")) return "faq";

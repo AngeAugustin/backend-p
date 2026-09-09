@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "sigfip-dgb"
-title: "Participation au projet SIGFIP — DGB Bénin / GIZ"
+title: "Participation au projet SIGFIP - DGB Bénin / GIZ"
 description: "Contribution à la refonte du périmètre DGB du SIGFIP, avec focus interopérabilité et X-ROAD."
 category: "api"
 featured: true
@@ -16,7 +16,7 @@ stack:
   - "X-ROAD"
 image: "/images/projects/benin-pay-api.svg"
 ---
-# Participation au projet SIGFIP — DGB Bénin / GIZ
+# Participation au projet SIGFIP - DGB Bénin / GIZ
 
 Contribution à la refonte du périmètre DGB du SIGFIP, avec focus interopérabilité et X-ROAD.
 

@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "connectors-audit-ai"
-title: "Connectors & AI Audit Platform — LuxAIIT"
+title: "Connectors & AI Audit Platform - LuxAIIT"
 description: "Connector platform to audit databases, REST/SOAP APIs, email services, and servers, enriched with LLMs."
 category: "ai"
 featured: true
@@ -17,7 +17,7 @@ stack:
   - "SOAP"
 image: "/images/projects/agent-orchestrator.svg"
 ---
-# Connectors & AI Audit Platform — LuxAIIT
+# Connectors & AI Audit Platform - LuxAIIT
 
 Connector platform to audit databases, REST/SOAP APIs, email services, and servers, enriched with LLMs.
 
