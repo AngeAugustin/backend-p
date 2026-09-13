@@ -1,38 +1,53 @@
 import { config } from "dotenv";
 import { Client } from "pg";
 
-config({ path: ".env.production.local" });
+const envFile = process.argv[2];
+if (envFile) {
+  config({ path: envFile, override: true });
+}
+
+const url = process.env.DATABASE_URL;
+
+function redact(value?: string) {
+  if (!value) return "(missing)";
+  return value.replace(/:[^:@/]+@/, ":****@");
+}
 
 async function main() {
-  const url = process.env.DATABASE_URL;
   if (!url) {
-    console.error("NO_DATABASE_URL");
+    console.error("DATABASE_URL is not set");
     process.exit(1);
   }
 
-  const host = url.split("@")[1]?.split("/")[0] || "unknown";
-  console.log("host", host.split(":")[0]);
-
   const client = new Client({
     connectionString: url,
-    ssl: { rejectUnauthorized: false },
+    ssl: /neon\.tech|sslmode=require/i.test(url)
+      ? { rejectUnauthorized: false }
+      : undefined,
   });
   await client.connect();
-  const tables = await client.query(
-    `SELECT tablename FROM pg_tables WHERE schemaname = 'public' ORDER BY tablename`
+
+  const tables = await client.query<{ table_name: string }>(`
+    SELECT table_name
+    FROM information_schema.tables
+    WHERE table_schema = 'public'
+    ORDER BY table_name
+  `);
+
+  const invoiceTables = tables.rows.filter((row) =>
+    /proforma|invoice/i.test(row.table_name),
   );
-  console.log("tables:");
-  for (const row of tables.rows) {
-    console.log("-", row.tablename);
-  }
-  const invoices = await client.query(
-    `SELECT to_regclass('public."ProformaInvoice"') AS invoice, to_regclass('public."ProformaInvoiceItem"') AS item`
+
+  console.log("host:", redact(url));
+  console.log("all_tables:", tables.rows.map((row) => row.table_name));
+  console.log(
+    "invoice_tables:",
+    invoiceTables.map((row) => row.table_name),
   );
-  console.log("proforma", invoices.rows[0]);
   await client.end();
 }
 
 main().catch((error) => {
-  console.error(error instanceof Error ? error.message : error);
+  console.error("FAIL", error instanceof Error ? error.message : error);
   process.exit(1);
 });
