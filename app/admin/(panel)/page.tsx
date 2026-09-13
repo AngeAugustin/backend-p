@@ -3,6 +3,7 @@ import {
   BookOpen,
   FolderKanban,
   Mail,
+  Receipt,
   Sparkles,
   type LucideIcon,
 } from "lucide-react";
@@ -46,6 +47,12 @@ const themes: StatTheme[] = [
     iconBg: "bg-[#dcfce7]",
     icon: "text-[#16a34a]",
     glow: "bg-[#bbf7d0]",
+  },
+  {
+    number: "text-[#115e59]",
+    iconBg: "bg-[#ccfbf1]",
+    icon: "text-[#0d9488]",
+    glow: "bg-[#99f6e4]",
   },
 ];
 
@@ -150,11 +157,12 @@ export default async function AdminDashboardPage() {
   since.setDate(1);
   since.setHours(0, 0, 0, 0);
 
-  const [projects, articles, services, unreadMessages, recentMessages] =
+  const [projects, articles, services, invoices, unreadMessages, recentMessages] =
     await Promise.all([
       prisma.project.count(),
       prisma.article.count(),
       prisma.service.count(),
+      prisma.proformaInvoice.count(),
       prisma.contactMessage.count({ where: { status: "new" } }),
       prisma.contactMessage.findMany({
         where: { createdAt: { gte: since } },
@@ -186,6 +194,13 @@ export default async function AdminDashboardPage() {
       icon: Sparkles,
     },
     {
+      href: "/admin/invoices",
+      title: "Factures",
+      subtitle: "Proformas",
+      count: invoices,
+      icon: Receipt,
+    },
+    {
       href: "/admin/contact-messages",
       title: "Messages",
       subtitle: "Nouveaux / non lus",
@@ -207,7 +222,7 @@ export default async function AdminDashboardPage() {
         <ReindexRagButton />
       </div>
 
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {cards.map((card, index) => (
           <StatCardItem key={card.href} {...card} theme={themes[index]} />
         ))}

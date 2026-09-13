@@ -13,8 +13,9 @@ export async function adminFetch<T>(
 
   if (!response.ok) {
     const body = await response.json().catch(() => ({}));
+    const payload = body as { error?: string; details?: string };
     throw new Error(
-      (body as { error?: string }).error || `Request failed (${response.status})`
+      payload.details || payload.error || `Request failed (${response.status})`
     );
   }
 
@@ -41,4 +42,23 @@ export async function adminUpload<T>(
 
   const body = (await response.json()) as { data: T };
   return body.data;
+}
+
+export async function adminDownload(path: string, filename: string) {
+  const response = await fetch(path, { credentials: "same-origin" });
+  if (!response.ok) {
+    const body = await response.json().catch(() => ({}));
+    throw new Error(
+      (body as { error?: string }).error || `Download failed (${response.status})`
+    );
+  }
+  const blob = await response.blob();
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = filename;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
 }

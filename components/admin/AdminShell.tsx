@@ -13,6 +13,7 @@ import {
   Mail,
   Menu,
   MessageSquareQuote,
+  Receipt,
   Sparkles,
   X,
 } from "lucide-react";
@@ -76,6 +77,12 @@ export function AdminShell({
         icon: iconByKey[resource.key] || FolderKanban,
         exact: false,
       })),
+      {
+        href: "/admin/invoices",
+        label: "Factures",
+        icon: Receipt,
+        exact: false,
+      },
       {
         href: "/admin/contact-messages",
         label: "Messages",
