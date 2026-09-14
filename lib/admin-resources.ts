@@ -31,6 +31,8 @@ export type ResourceConfig = {
   duplicable?: boolean;
   /** Create FR + EN rows in one form/submit */
   bilingualCreate?: boolean;
+  /** Keep slug in sync with title until the user edits slug */
+  autoSlugFromTitle?: boolean;
   fields: FieldConfig[];
 };
 
@@ -120,15 +122,22 @@ export const resources: ResourceConfig[] = [
     subtitleField: "slug",
     duplicable: true,
     bilingualCreate: true,
+    autoSlugFromTitle: true,
     fields: [
       localeField,
-      { name: "slug", label: "Slug", type: "text", required: true },
       {
         name: "title",
         label: "Titre",
         type: "text",
         required: true,
         localized: true,
+      },
+      {
+        name: "slug",
+        label: "Slug",
+        type: "text",
+        required: true,
+        help: "Généré depuis le titre — tu peux le modifier.",
       },
       {
         name: "excerpt",

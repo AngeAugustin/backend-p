@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 import { ArrowLeft } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import type { FieldConfig, ResourceConfig } from "@/lib/admin-resources";
+import { slugify } from "@/lib/bilingual";
 import { ImageUploadField } from "@/components/admin/ImageUploadField";
 import {
   LocalizedField,
@@ -64,6 +65,11 @@ function asLocalized(value: unknown): LocalizedString {
     };
   }
   return emptyLocalized();
+}
+
+function titleSourceForSlug(value: unknown, bilingual: boolean) {
+  if (bilingual) return asLocalized(value).fr;
+  return String(value ?? "");
 }
 
 function SharedField({
@@ -187,6 +193,11 @@ function SharedField({
         }
         className={fieldClass}
       />
+      {field.help ? (
+        <span className="mt-1.5 block text-xs text-muted-foreground">
+          {field.help}
+        </span>
+      ) : null}
     </label>
   );
 }
@@ -207,17 +218,17 @@ export function ResourceForm({
   );
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const slugManualRef = useRef(false);
 
   const title = useMemo(
     () => (id ? `Éditer ${resource.singular}` : `Nouveau ${resource.singular}`),
     [id, resource.singular]
   );
 
-  const sharedFields = useMemo(
+  const visibleFields = useMemo(
     () =>
       resource.fields.filter((field) => {
         if (bilingual && field.type === "locale") return false;
-        if (bilingual && field.localized) return false;
         return true;
       }),
     [resource.fields, bilingual]
@@ -228,8 +239,31 @@ export function ResourceForm({
     [resource.fields, bilingual]
   );
 
+  const sharedFields = useMemo(
+    () =>
+      visibleFields.filter((field) => !(bilingual && field.localized)),
+    [visibleFields, bilingual]
+  );
+
   function update(name: string, value: unknown) {
-    setValues((prev) => ({ ...prev, [name]: value }));
+    if (name === "slug") {
+      // Unlock auto-slug again if the field is cleared.
+      slugManualRef.current = String(value ?? "").trim().length > 0;
+    }
+
+    setValues((prev) => {
+      const next: Values = { ...prev, [name]: value };
+
+      if (
+        resource.autoSlugFromTitle &&
+        name === "title" &&
+        !slugManualRef.current
+      ) {
+        next.slug = slugify(titleSourceForSlug(value, bilingual));
+      }
+
+      return next;
+    });
   }
 
   async function onSubmit(event: React.FormEvent) {
@@ -261,6 +295,13 @@ export function ResourceForm({
           payload[field.name] = values[field.name];
         }
 
+        if (
+          resource.autoSlugFromTitle &&
+          (!payload.slug || !String(payload.slug).trim())
+        ) {
+          payload.slug = slugify(String(locales.fr.title ?? ""));
+        }
+
         if (payload.publish) {
           delete payload.publishedAt;
         } else {
@@ -275,6 +316,14 @@ export function ResourceForm({
       } else {
         const payload: Values = { ...values };
         payload.publish = Boolean(values.publish);
+
+        if (
+          resource.autoSlugFromTitle &&
+          (!payload.slug || !String(payload.slug).trim())
+        ) {
+          payload.slug = slugify(String(payload.title ?? ""));
+        }
+
         if (payload.publish) {
           delete payload.publishedAt;
         } else {
@@ -339,28 +388,28 @@ export function ResourceForm({
       ) : null}
 
       <div className="grid gap-5 rounded-2xl border border-border bg-card p-5 shadow-sm sm:p-6 md:grid-cols-2">
-        {sharedFields.map((field) => (
-          <SharedField
-            key={field.name}
-            field={field}
-            value={values[field.name]}
-            onChange={(next) => update(field.name, next)}
-            resourceKey={resource.key}
-          />
-        ))}
-
-        {localizedFields.map((field) => (
-          <LocalizedField
-            key={field.name}
-            label={field.label}
-            value={asLocalized(values[field.name])}
-            onChange={(next) => update(field.name, next)}
-            multiline={field.type === "textarea"}
-            richtext={field.type === "richtext"}
-            rows={field.rows || 4}
-            required={field.required}
-          />
-        ))}
+        {visibleFields.map((field) =>
+          bilingual && field.localized ? (
+            <LocalizedField
+              key={field.name}
+              label={field.label}
+              value={asLocalized(values[field.name])}
+              onChange={(next) => update(field.name, next)}
+              multiline={field.type === "textarea"}
+              richtext={field.type === "richtext"}
+              rows={field.rows || 4}
+              required={field.required}
+            />
+          ) : (
+            <SharedField
+              key={field.name}
+              field={field}
+              value={values[field.name]}
+              onChange={(next) => update(field.name, next)}
+              resourceKey={resource.key}
+            />
+          )
+        )}
       </div>
 
       <div className="mt-6 flex flex-wrap gap-3">
