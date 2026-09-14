@@ -64,10 +64,15 @@ const handlers = createAdminCollectionHandlers<Body>({
         throw new Error("Les titres FR et EN sont requis");
       }
 
-      const slug =
+      const slugFr =
+        localizedText(locales, "slug", "fr").trim() ||
         (typeof data.slug === "string" && data.slug.trim()) ||
         slugify(titleFr);
-      if (!slug) throw new Error("Slug invalide");
+      const slugEn =
+        localizedText(locales, "slug", "en").trim() ||
+        (typeof data.slug === "string" && data.slug.trim()) ||
+        slugify(titleEn);
+      if (!slugFr || !slugEn) throw new Error("Slug invalide");
 
       const shared = sharedFromBody(data);
 
@@ -75,7 +80,7 @@ const handlers = createAdminCollectionHandlers<Body>({
         prisma.article.create({
           data: {
             locale: "fr",
-            slug,
+            slug: slugFr,
             title: titleFr,
             excerpt: localizedText(locales, "excerpt", "fr"),
             content: localizedText(locales, "content", "fr") || null,
@@ -85,7 +90,7 @@ const handlers = createAdminCollectionHandlers<Body>({
         prisma.article.create({
           data: {
             locale: "en",
-            slug,
+            slug: slugEn,
             title: titleEn,
             excerpt: localizedText(locales, "excerpt", "en"),
             content: localizedText(locales, "content", "en") || null,

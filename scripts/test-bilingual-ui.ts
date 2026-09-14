@@ -127,7 +127,8 @@ async function testProjectUiCreate() {
 
 async function testArticleUiCreate() {
   const stamp = Date.now();
-  const slug = `ui-art-${stamp}`;
+  const slugFr = `ui-art-fr-${stamp}`;
+  const slugEn = `ui-art-en-${stamp}`;
   const browser = await chromium.launch({ channel: "chrome", headless: true });
   const page = await browser.newPage();
 
@@ -142,9 +143,9 @@ async function testArticleUiCreate() {
       timeout: 10000,
     });
 
-    await fillSharedText(page, "Slug", slug);
     await fillSharedText(page, "Date (YYYY-MM)", "2026-09");
     await fillLocalized(page, "Titre", "Article UI FR", "UI Article EN");
+    await fillLocalized(page, "Slug", slugFr, slugEn);
     await fillLocalized(page, "Excerpt", "Extrait FR", "Excerpt EN");
     await fillLocalized(page, "Contenu", "Contenu FR", "Content EN");
 
@@ -163,11 +164,23 @@ async function testArticleUiCreate() {
 
     await page.waitForURL(/\/admin\/articles\/?$/, { timeout: 15000 });
 
-    const rows = await prisma.article.findMany({ where: { slug } });
+    const rows = await prisma.article.findMany({
+      where: { slug: { in: [slugFr, slugEn] } },
+    });
     assert(rows.length === 2, `articles DB count ${rows.length}`);
+    assert(
+      rows.some((row) => row.locale === "fr" && row.slug === slugFr),
+      "FR slug missing/wrong"
+    );
+    assert(
+      rows.some((row) => row.locale === "en" && row.slug === slugEn),
+      "EN slug missing/wrong"
+    );
     console.log("✓ UI article bilingual create");
   } finally {
-    await prisma.article.deleteMany({ where: { slug } });
+    await prisma.article.deleteMany({
+      where: { slug: { in: [slugFr, slugEn] } },
+    });
     await browser.close();
   }
 }

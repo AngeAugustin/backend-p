@@ -137,7 +137,8 @@ export const resources: ResourceConfig[] = [
         label: "Slug",
         type: "text",
         required: true,
-        help: "Généré depuis le titre — tu peux le modifier.",
+        localized: true,
+        help: "Généré depuis le titre de chaque langue — modifiable.",
       },
       {
         name: "excerpt",

@@ -72,6 +72,8 @@ function titleSourceForSlug(value: unknown, bilingual: boolean) {
   return String(value ?? "");
 }
 
+type SlugManualState = { fr: boolean; en: boolean };
+
 function SharedField({
   field,
   value,
@@ -218,7 +220,7 @@ export function ResourceForm({
   );
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
-  const slugManualRef = useRef(false);
+  const slugManualRef = useRef<SlugManualState>({ fr: false, en: false });
 
   const title = useMemo(
     () => (id ? `Éditer ${resource.singular}` : `Nouveau ${resource.singular}`),
@@ -245,21 +247,45 @@ export function ResourceForm({
     [visibleFields, bilingual]
   );
 
-  function update(name: string, value: unknown) {
-    if (name === "slug") {
-      // Unlock auto-slug again if the field is cleared.
-      slugManualRef.current = String(value ?? "").trim().length > 0;
-    }
+  const slugIsLocalized = Boolean(
+    bilingual && resource.fields.some((field) => field.name === "slug" && field.localized)
+  );
 
+  function update(name: string, value: unknown) {
     setValues((prev) => {
       const next: Values = { ...prev, [name]: value };
 
-      if (
-        resource.autoSlugFromTitle &&
-        name === "title" &&
-        !slugManualRef.current
-      ) {
-        next.slug = slugify(titleSourceForSlug(value, bilingual));
+      if (name === "slug") {
+        if (slugIsLocalized) {
+          const pair = asLocalized(value);
+          const prevPair = asLocalized(prev.slug);
+          if (pair.fr !== prevPair.fr) {
+            slugManualRef.current.fr = pair.fr.trim().length > 0;
+          }
+          if (pair.en !== prevPair.en) {
+            slugManualRef.current.en = pair.en.trim().length > 0;
+          }
+        } else {
+          const manual = String(value ?? "").trim().length > 0;
+          slugManualRef.current = { fr: manual, en: manual };
+        }
+      }
+
+      if (resource.autoSlugFromTitle && name === "title") {
+        if (slugIsLocalized) {
+          const titles = asLocalized(value);
+          const currentSlug = asLocalized(prev.slug);
+          next.slug = {
+            fr: slugManualRef.current.fr
+              ? currentSlug.fr
+              : slugify(titles.fr),
+            en: slugManualRef.current.en
+              ? currentSlug.en
+              : slugify(titles.en),
+          };
+        } else if (!slugManualRef.current.fr) {
+          next.slug = slugify(titleSourceForSlug(value, bilingual));
+        }
       }
 
       return next;
@@ -295,11 +321,19 @@ export function ResourceForm({
           payload[field.name] = values[field.name];
         }
 
-        if (
-          resource.autoSlugFromTitle &&
-          (!payload.slug || !String(payload.slug).trim())
-        ) {
-          payload.slug = slugify(String(locales.fr.title ?? ""));
+        if (resource.autoSlugFromTitle) {
+          if (!String(locales.fr.slug ?? "").trim()) {
+            locales.fr.slug = slugify(String(locales.fr.title ?? ""));
+          }
+          if (!String(locales.en.slug ?? "").trim()) {
+            locales.en.slug = slugify(String(locales.en.title ?? ""));
+          }
+          if (
+            !slugIsLocalized &&
+            (!payload.slug || !String(payload.slug).trim())
+          ) {
+            payload.slug = slugify(String(locales.fr.title ?? ""));
+          }
         }
 
         if (payload.publish) {
@@ -358,7 +392,9 @@ export function ResourceForm({
         title={title}
         description={
           bilingual
-            ? "Remplis FR et EN en une fois : deux entrées seront créées (même slug)."
+            ? slugIsLocalized
+              ? "Remplis FR et EN en une fois : deux entrées seront créées (slugs séparés)."
+              : "Remplis FR et EN en une fois : deux entrées seront créées (même slug)."
             : "Les champs multilignes acceptent une entrée par ligne (stack, tags…)."
         }
         actions={
