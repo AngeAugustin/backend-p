@@ -1,6 +1,7 @@
 export type FieldType =
   | "text"
   | "textarea"
+  | "richtext"
   | "number"
   | "checkbox"
   | "select"
@@ -76,8 +77,8 @@ export const resources: ResourceConfig[] = [
       },
       {
         name: "caseStudy",
-        label: "Case study",
-        type: "textarea",
+        label: "Contenu",
+        type: "richtext",
         rows: 8,
         localized: true,
       },
@@ -140,7 +141,7 @@ export const resources: ResourceConfig[] = [
       {
         name: "content",
         label: "Contenu",
-        type: "textarea",
+        type: "richtext",
         rows: 12,
         localized: true,
       },

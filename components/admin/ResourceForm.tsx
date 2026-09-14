@@ -12,6 +12,7 @@ import {
   type LocalizedString,
 } from "@/components/admin/LocalizedField";
 import { PageHeader } from "@/components/admin/PageHeader";
+import { RichTextEditor } from "@/components/admin/RichTextEditor";
 
 type Values = Record<string, unknown>;
 
@@ -132,6 +133,20 @@ function SharedField({
         folder={folder}
         onChange={(next) => onChange(next)}
       />
+    );
+  }
+
+  if (field.type === "richtext") {
+    return (
+      <div className="block text-sm md:col-span-2">
+        <span className="mb-1.5 block font-medium text-muted-foreground">
+          {field.label}
+        </span>
+        <RichTextEditor
+          value={String(value ?? "")}
+          onChange={(next) => onChange(next)}
+        />
+      </div>
     );
   }
 
@@ -341,6 +356,7 @@ export function ResourceForm({
             value={asLocalized(values[field.name])}
             onChange={(next) => update(field.name, next)}
             multiline={field.type === "textarea"}
+            richtext={field.type === "richtext"}
             rows={field.rows || 4}
             required={field.required}
           />

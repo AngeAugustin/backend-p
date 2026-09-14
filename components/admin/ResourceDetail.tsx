@@ -127,7 +127,12 @@ export function ResourceDetail({
             const display = formatValue(field.name, field.type, raw, data);
             const isLong =
               field.type === "textarea" ||
+              field.type === "richtext" ||
               (typeof display === "string" && display.length > 120);
+            const isHtml =
+              field.type === "richtext" &&
+              typeof raw === "string" &&
+              /<\/?[a-z][\s\S]*>/i.test(raw);
 
             return (
               <section
@@ -140,14 +145,23 @@ export function ResourceDetail({
                 <h3 className="text-xs font-medium uppercase tracking-[0.14em] text-muted-foreground">
                   {field.label}
                 </h3>
-                <div
-                  className={cn(
-                    "mt-2 whitespace-pre-wrap text-sm leading-relaxed text-foreground",
-                    field.type === "textarea" && "text-[15px]"
-                  )}
-                >
-                  {display}
-                </div>
+                {isHtml ? (
+                  <div
+                    className="mt-2 space-y-3 text-[15px] leading-relaxed text-foreground [&_a]:text-glow [&_a]:underline [&_h2]:mt-4 [&_h2]:text-lg [&_h2]:font-bold [&_h3]:mt-3 [&_h3]:text-base [&_h3]:font-semibold [&_mark]:rounded-sm [&_mark]:bg-amber-200/80 [&_mark]:px-0.5 [&_ol]:list-decimal [&_ol]:pl-5 [&_ul]:list-disc [&_ul]:pl-5"
+                    dangerouslySetInnerHTML={{ __html: String(raw) }}
+                  />
+                ) : (
+                  <div
+                    className={cn(
+                      "mt-2 whitespace-pre-wrap text-sm leading-relaxed text-foreground",
+                      (field.type === "textarea" ||
+                        field.type === "richtext") &&
+                        "text-[15px]"
+                    )}
+                  >
+                    {display}
+                  </div>
+                )}
               </section>
             );
           })}
