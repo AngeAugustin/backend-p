@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Eye, Pencil, Plus, Trash2 } from "lucide-react";
+import { BarChart3, Eye, Pencil, Plus, Trash2 } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import type { ResourceConfig } from "@/lib/admin-resources";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
@@ -10,7 +10,11 @@ import { DuplicateResourceButton } from "@/components/admin/DuplicateResourceBut
 import { PageHeader } from "@/components/admin/PageHeader";
 import { cn } from "@/lib/utils";
 
-type Row = Record<string, unknown> & { id: string; publishedAt?: string | null };
+type Row = Record<string, unknown> & {
+  id: string;
+  publishedAt?: string | null;
+  viewCount?: number;
+};
 
 export function ResourceList({ resource }: { resource: ResourceConfig }) {
   const [rows, setRows] = useState<Row[]>([]);
@@ -59,6 +63,8 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
   const deleteTitle = deleteTarget
     ? String(deleteTarget[resource.titleField] ?? resource.singular)
     : "";
+  const showViews = resource.key === "articles";
+  const colSpan = showViews ? 5 : 4;
 
   return (
     <div>
@@ -121,19 +127,22 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
               <th className="px-5 py-3.5 font-medium">Titre</th>
               <th className="px-5 py-3.5 font-medium">Locale</th>
               <th className="px-5 py-3.5 font-medium">Statut</th>
+              {showViews ? (
+                <th className="px-5 py-3.5 font-medium">Vues</th>
+              ) : null}
               <th className="px-5 py-3.5 font-medium">Actions</th>
             </tr>
           </thead>
           <tbody>
             {loading ? (
               <tr>
-                <td className="px-5 py-8 text-muted-foreground" colSpan={4}>
+                <td className="px-5 py-8 text-muted-foreground" colSpan={colSpan}>
                   Chargement…
                 </td>
               </tr>
             ) : rows.length === 0 ? (
               <tr>
-                <td className="px-5 py-8 text-muted-foreground" colSpan={4}>
+                <td className="px-5 py-8 text-muted-foreground" colSpan={colSpan}>
                   Aucun élément.
                 </td>
               </tr>
@@ -175,6 +184,17 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
                       {row.publishedAt ? "Publié" : "Brouillon"}
                     </span>
                   </td>
+                  {showViews ? (
+                    <td className="px-5 py-4">
+                      <Link
+                        href={`/admin/${resource.key}/${row.id}/stats`}
+                        className="inline-flex items-center gap-1.5 text-sm font-medium text-foreground transition hover:text-glow"
+                      >
+                        <Eye className="size-3.5 text-muted-foreground" />
+                        {typeof row.viewCount === "number" ? row.viewCount : 0}
+                      </Link>
+                    </td>
+                  ) : null}
                   <td className="px-5 py-4">
                     <div className="flex items-center gap-2">
                       <Link
@@ -184,6 +204,15 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
                         <Eye className="size-3.5" />
                         Voir
                       </Link>
+                      {showViews ? (
+                        <Link
+                          href={`/admin/${resource.key}/${row.id}/stats`}
+                          className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-foreground transition hover:bg-accent"
+                        >
+                          <BarChart3 className="size-3.5" />
+                          Stats
+                        </Link>
+                      ) : null}
                       <Link
                         href={`/admin/${resource.key}/${row.id}/edit`}
                         className="inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm text-foreground transition hover:bg-accent"

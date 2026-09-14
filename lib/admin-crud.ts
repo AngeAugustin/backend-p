@@ -7,7 +7,7 @@ type Serializable = Parameters<typeof serializeEntry>[0];
 
 type CollectionHandlers<TCreate> = {
   list: (locale?: string | null) => Promise<Serializable[]>;
-  create: (data: TCreate) => Promise<Serializable>;
+  create: (data: TCreate) => Promise<Serializable | Serializable[]>;
 };
 
 type ItemHandlers<TUpdate> = {
@@ -36,6 +36,12 @@ export function createAdminCollectionHandlers<TCreate>(
       try {
         const body = (await request.json()) as TCreate;
         const created = await handlers.create(body);
+        if (Array.isArray(created)) {
+          return json(
+            { data: created.map(serializeEntry) },
+            { status: 201 }
+          );
+        }
         return json({ data: serializeEntry(created) }, { status: 201 });
       } catch (error) {
         return json(

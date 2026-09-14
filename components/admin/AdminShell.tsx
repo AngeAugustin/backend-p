@@ -271,8 +271,23 @@ export function AdminShell({
           </div>
         </header>
 
-        <main className="flex-1 px-4 py-6 sm:px-6 lg:px-8 lg:py-8">
-          <div className="mx-auto max-w-6xl">{children}</div>
+        <main
+          className={cn(
+            "flex-1",
+            pathname.startsWith("/admin/contact-messages")
+              ? "min-h-0 overflow-hidden p-0"
+              : "px-4 py-6 sm:px-6 lg:px-8 lg:py-8"
+          )}
+        >
+          <div
+            className={cn(
+              pathname.startsWith("/admin/contact-messages")
+                ? "h-[calc(100dvh-4rem)]"
+                : "mx-auto max-w-6xl"
+            )}
+          >
+            {children}
+          </div>
         </main>
       </div>
     </div>

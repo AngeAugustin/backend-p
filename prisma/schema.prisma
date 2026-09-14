@@ -55,9 +55,28 @@ model Article {
   publishedAt DateTime?
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
+  views       ArticleView[]
 
   @@unique([slug, locale])
   @@index([locale, publishedAt])
+}
+
+model ArticleView {
+  id          String   @id @default(cuid())
+  articleId   String
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  country     String?
+  countryCode String?
+  city        String?
+  region      String?
+  visitorHash String
+  viewDate    String
+  createdAt   DateTime @default(now())
+
+  @@unique([articleId, visitorHash, viewDate])
+  @@index([articleId, createdAt])
+  @@index([articleId, country])
+  @@index([articleId, city])
 }
 
 model Service {

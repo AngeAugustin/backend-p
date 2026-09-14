@@ -58,7 +58,7 @@ function buildAboutContextPrefix(
     return "";
   }
 
-  const identity = [name, title].filter(Boolean).join(" — ");
+  const identity = [name, title].filter(Boolean).join(" - ");
   const isFrench = locale === "fr";
 
   const locationLine = location

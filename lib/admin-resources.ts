@@ -16,6 +16,8 @@ export type FieldConfig = {
   options?: { value: string; label: string }[];
   rows?: number;
   help?: string;
+  /** Shown as FR + EN side-by-side on bilingual create */
+  localized?: boolean;
 };
 
 export type ResourceConfig = {
@@ -26,6 +28,8 @@ export type ResourceConfig = {
   titleField: string;
   subtitleField?: string;
   duplicable?: boolean;
+  /** Create FR + EN rows in one form/submit */
+  bilingualCreate?: boolean;
   fields: FieldConfig[];
 };
 
@@ -51,22 +55,31 @@ export const resources: ResourceConfig[] = [
     titleField: "title",
     subtitleField: "slug",
     duplicable: true,
+    bilingualCreate: true,
     fields: [
       localeField,
       { name: "slug", label: "Slug", type: "text", required: true },
-      { name: "title", label: "Titre", type: "text", required: true },
+      {
+        name: "title",
+        label: "Titre",
+        type: "text",
+        required: true,
+        localized: true,
+      },
       {
         name: "description",
         label: "Description",
         type: "textarea",
         required: true,
         rows: 3,
+        localized: true,
       },
       {
         name: "caseStudy",
         label: "Case study",
         type: "textarea",
         rows: 8,
+        localized: true,
       },
       {
         name: "category",
@@ -89,6 +102,7 @@ export const resources: ResourceConfig[] = [
         label: "Stack (une techno par ligne)",
         type: "textarea",
         rows: 4,
+        localized: true,
       },
       { name: "imageUrl", label: "Image de couverture", type: "image" },
       { name: "liveUrl", label: "Live URL", type: "text" },
@@ -104,18 +118,32 @@ export const resources: ResourceConfig[] = [
     titleField: "title",
     subtitleField: "slug",
     duplicable: true,
+    bilingualCreate: true,
     fields: [
       localeField,
       { name: "slug", label: "Slug", type: "text", required: true },
-      { name: "title", label: "Titre", type: "text", required: true },
+      {
+        name: "title",
+        label: "Titre",
+        type: "text",
+        required: true,
+        localized: true,
+      },
       {
         name: "excerpt",
         label: "Excerpt",
         type: "textarea",
         required: true,
         rows: 3,
+        localized: true,
       },
-      { name: "content", label: "Contenu", type: "textarea", rows: 12 },
+      {
+        name: "content",
+        label: "Contenu",
+        type: "textarea",
+        rows: 12,
+        localized: true,
+      },
       {
         name: "category",
         label: "Catégorie",
@@ -141,44 +169,74 @@ export const resources: ResourceConfig[] = [
     apiPath: "/api/admin/services",
     titleField: "title",
     subtitleField: "slug",
+    bilingualCreate: true,
     fields: [
       localeField,
       { name: "slug", label: "Slug", type: "text", required: true },
-      { name: "title", label: "Titre", type: "text", required: true },
+      {
+        name: "title",
+        label: "Titre",
+        type: "text",
+        required: true,
+        localized: true,
+      },
       {
         name: "summary",
         label: "Résumé",
         type: "textarea",
         required: true,
         rows: 3,
+        localized: true,
       },
-      { name: "tagline", label: "Tagline", type: "textarea", rows: 2 },
-      { name: "overview", label: "Overview", type: "textarea", rows: 6 },
+      {
+        name: "tagline",
+        label: "Tagline",
+        type: "textarea",
+        rows: 2,
+        localized: true,
+      },
+      {
+        name: "overview",
+        label: "Overview",
+        type: "textarea",
+        rows: 6,
+        localized: true,
+      },
       { name: "order", label: "Ordre", type: "number" },
-      { name: "tags", label: "Tags (une par ligne)", type: "textarea", rows: 3 },
+      {
+        name: "tags",
+        label: "Tags (une par ligne)",
+        type: "textarea",
+        rows: 3,
+        localized: true,
+      },
       {
         name: "deliverables",
         label: "Livrables (une par ligne)",
         type: "textarea",
         rows: 4,
+        localized: true,
       },
       {
         name: "approach",
         label: "Approche (une par ligne)",
         type: "textarea",
         rows: 4,
+        localized: true,
       },
       {
         name: "stack",
         label: "Stack (une par ligne)",
         type: "textarea",
         rows: 4,
+        localized: true,
       },
       {
         name: "idealFor",
         label: "Idéal pour (une par ligne)",
         type: "textarea",
         rows: 4,
+        localized: true,
       },
       publishField,
     ],
@@ -191,19 +249,44 @@ export const resources: ResourceConfig[] = [
     titleField: "role",
     subtitleField: "company",
     duplicable: true,
+    bilingualCreate: true,
     fields: [
       localeField,
       { name: "key", label: "Clé", type: "text", required: true },
-      { name: "role", label: "Rôle", type: "text", required: true },
-      { name: "company", label: "Entreprise", type: "text", required: true },
-      { name: "location", label: "Localisation", type: "text" },
-      { name: "period", label: "Période", type: "text", required: true },
+      {
+        name: "role",
+        label: "Rôle",
+        type: "text",
+        required: true,
+        localized: true,
+      },
+      {
+        name: "company",
+        label: "Entreprise",
+        type: "text",
+        required: true,
+        localized: true,
+      },
+      {
+        name: "location",
+        label: "Localisation",
+        type: "text",
+        localized: true,
+      },
+      {
+        name: "period",
+        label: "Période",
+        type: "text",
+        required: true,
+        localized: true,
+      },
       {
         name: "description",
         label: "Description",
         type: "textarea",
         required: true,
         rows: 4,
+        localized: true,
       },
       { name: "order", label: "Ordre", type: "number" },
       publishField,
@@ -216,12 +299,26 @@ export const resources: ResourceConfig[] = [
     apiPath: "/api/admin/testimonials",
     titleField: "author",
     subtitleField: "role",
+    bilingualCreate: true,
     fields: [
       localeField,
       { name: "key", label: "Clé", type: "text", required: true },
-      { name: "quote", label: "Citation", type: "textarea", required: true, rows: 4 },
+      {
+        name: "quote",
+        label: "Citation",
+        type: "textarea",
+        required: true,
+        rows: 4,
+        localized: true,
+      },
       { name: "author", label: "Auteur", type: "text", required: true },
-      { name: "role", label: "Rôle", type: "text", required: true },
+      {
+        name: "role",
+        label: "Rôle",
+        type: "text",
+        required: true,
+        localized: true,
+      },
       { name: "order", label: "Ordre", type: "number" },
       publishField,
     ],
@@ -234,18 +331,38 @@ export const resources: ResourceConfig[] = [
     titleField: "degree",
     subtitleField: "school",
     duplicable: true,
+    bilingualCreate: true,
     fields: [
       localeField,
       { name: "key", label: "Clé", type: "text", required: true },
-      { name: "degree", label: "Diplôme", type: "text", required: true },
-      { name: "school", label: "École", type: "text", required: true },
-      { name: "period", label: "Période", type: "text", required: true },
+      {
+        name: "degree",
+        label: "Diplôme",
+        type: "text",
+        required: true,
+        localized: true,
+      },
+      {
+        name: "school",
+        label: "École",
+        type: "text",
+        required: true,
+        localized: true,
+      },
+      {
+        name: "period",
+        label: "Période",
+        type: "text",
+        required: true,
+        localized: true,
+      },
       {
         name: "description",
         label: "Description",
         type: "textarea",
         required: true,
         rows: 4,
+        localized: true,
       },
       {
         name: "status",
@@ -257,7 +374,12 @@ export const resources: ResourceConfig[] = [
           { value: "ongoing", label: "ongoing" },
         ],
       },
-      { name: "highlight", label: "Highlight", type: "text" },
+      {
+        name: "highlight",
+        label: "Highlight",
+        type: "text",
+        localized: true,
+      },
       { name: "order", label: "Ordre", type: "number" },
       publishField,
     ],

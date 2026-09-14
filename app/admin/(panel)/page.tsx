@@ -157,10 +157,18 @@ export default async function AdminDashboardPage() {
   since.setDate(1);
   since.setHours(0, 0, 0, 0);
 
-  const [projects, articles, services, invoices, unreadMessages, recentMessages] =
-    await Promise.all([
+  const [
+    projects,
+    articles,
+    articleViews,
+    services,
+    invoices,
+    unreadMessages,
+    recentMessages,
+  ] = await Promise.all([
       prisma.project.count(),
       prisma.article.count(),
+      prisma.articleView.count(),
       prisma.service.count(),
       prisma.proformaInvoice.count(),
       prisma.contactMessage.count({ where: { status: "new" } }),
@@ -182,7 +190,7 @@ export default async function AdminDashboardPage() {
     {
       href: "/admin/articles",
       title: "Articles",
-      subtitle: "Contenus du blog",
+      subtitle: `${articleViews} vue${articleViews === 1 ? "" : "s"} au total`,
       count: articles,
       icon: BookOpen,
     },

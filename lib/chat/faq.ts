@@ -335,11 +335,11 @@ async function buildProjectsReply(
   const moreParagraph =
     locale === "fr"
       ? filter === "ai"
-        ? "Il y en a encore bien d'autres projets liés à l'IA — vous pouvez tous les découvrir sur la page Projets du portfolio, avec stack, contexte et résultats."
-        : "Il y en a encore bien d'autres — vous pouvez tous les découvrir sur la page Projets du portfolio, avec stack, contexte et résultats."
+        ? "Il y en a encore bien d'autres projets liés à l'IA. Vous pouvez tous les découvrir sur la page Projets du portfolio, avec stack, contexte et résultats."
+        : "Il y en a encore bien d'autres. Vous pouvez tous les découvrir sur la page Projets du portfolio, avec stack, contexte et résultats."
       : filter === "ai"
-        ? "There are many more AI-related projects — you can browse them all on the Projects page of the portfolio, with stack, context, and outcomes."
-        : "There are many more — you can browse them all on the Projects page of the portfolio, with stack, context, and outcomes.";
+        ? "There are many more AI-related projects. You can browse them all on the Projects page of the portfolio, with stack, context, and outcomes."
+        : "There are many more. You can browse them all on the Projects page of the portfolio, with stack, context, and outcomes.";
 
   const closing =
     locale === "fr"

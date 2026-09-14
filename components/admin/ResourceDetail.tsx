@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { ArrowLeft, Pencil } from "lucide-react";
+import { ArrowLeft, BarChart3, Pencil } from "lucide-react";
 import { DuplicateResourceButton } from "@/components/admin/DuplicateResourceButton";
 import type { ResourceConfig } from "@/lib/admin-resources";
 import { PageHeader } from "@/components/admin/PageHeader";
@@ -68,6 +68,15 @@ export function ResourceDetail({
               <ArrowLeft className="size-4" />
               Retour
             </Link>
+            {resource.key === "articles" ? (
+              <Link
+                href={`/admin/${resource.key}/${id}/stats`}
+                className="inline-flex h-11 items-center gap-2 rounded-full border border-border bg-card px-5 text-sm font-medium transition hover:bg-accent"
+              >
+                <BarChart3 className="size-4" />
+                Stats
+              </Link>
+            ) : null}
             <Link
               href={`/admin/${resource.key}/${id}/edit`}
               className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"

@@ -135,7 +135,7 @@ ${stackBlock}
         role: experience.role,
         company: experience.company,
         period: experience.period,
-      })}# ${experience.role} — ${experience.company}
+      })}# ${experience.role} - ${experience.company}
 
 **Period:** ${experience.period}
 ${experience.location ? `**Location:** ${experience.location}` : ""}
