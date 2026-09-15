@@ -14,6 +14,11 @@ import {
 } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import {
+  DEFAULT_ADMIN_PAGE_SIZE,
+  Pagination,
+  useClientPagination,
+} from "@/components/admin/Pagination";
 import { cn } from "@/lib/utils";
 
 type Message = {
@@ -163,19 +168,25 @@ export default function ContactMessagesPage() {
       });
   }, [rows, folder, query]);
 
+  const { page, setPage, pageItems, meta, showPagination } = useClientPagination(
+    visible,
+    DEFAULT_ADMIN_PAGE_SIZE,
+    `${folder}:${query}`
+  );
+
   useEffect(() => {
-    if (visible.length === 0) {
+    if (pageItems.length === 0) {
       setSelectedId(null);
       return;
     }
-    if (!selectedId || !visible.some((row) => row.id === selectedId)) {
-      setSelectedId(visible[0]!.id);
+    if (!selectedId || !pageItems.some((row) => row.id === selectedId)) {
+      setSelectedId(pageItems[0]!.id);
     }
-  }, [visible, selectedId]);
+  }, [pageItems, selectedId]);
 
   const selected = useMemo(
-    () => visible.find((row) => row.id === selectedId) ?? null,
-    [visible, selectedId]
+    () => rows.find((row) => row.id === selectedId) ?? null,
+    [rows, selectedId]
   );
 
   async function setStatus(id: string, status: string) {
@@ -380,7 +391,7 @@ export default function ContactMessagesPage() {
               </div>
             ) : (
               <ul role="listbox" aria-label="Liste des messages">
-                {visible.map((row) => {
+                {pageItems.map((row) => {
                   const active = row.id === selectedId;
                   const unread = row.status === "new";
                   return (
@@ -459,6 +470,19 @@ export default function ContactMessagesPage() {
               </ul>
             )}
           </div>
+
+          {showPagination ? (
+            <div className="shrink-0 border-t border-border bg-card px-3 py-3">
+              <Pagination
+                page={page}
+                pageCount={meta.pageCount}
+                total={meta.total}
+                pageSize={meta.pageSize}
+                onPageChange={setPage}
+                disabled={loading}
+              />
+            </div>
+          ) : null}
         </section>
 
         {/* Reading pane */}

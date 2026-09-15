@@ -16,6 +16,11 @@ import {
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
 import { InvoiceDownloadButton } from "@/components/admin/InvoiceDownloadButton";
 import { InvoiceStatusBadge } from "@/components/admin/InvoiceStatusBadge";
+import {
+  DEFAULT_ADMIN_PAGE_SIZE,
+  Pagination,
+  useClientPagination,
+} from "@/components/admin/Pagination";
 import { PageHeader } from "@/components/admin/PageHeader";
 
 export function InvoiceList() {
@@ -56,6 +61,12 @@ export function InvoiceList() {
         .some((value) => String(value).toLowerCase().includes(needle))
     );
   }, [rows, query]);
+
+  const { page, setPage, pageItems, meta, showPagination } = useClientPagination(
+    filtered,
+    DEFAULT_ADMIN_PAGE_SIZE,
+    `${status}:${query}`
+  );
 
   async function confirmDelete() {
     if (!deleteTarget) return;
@@ -163,7 +174,7 @@ export function InvoiceList() {
                 </td>
               </tr>
             ) : (
-              filtered.map((row) => (
+              pageItems.map((row) => (
                 <tr
                   key={row.id}
                   className="border-t border-border/70 transition hover:bg-accent/40"
@@ -232,6 +243,18 @@ export function InvoiceList() {
           </tbody>
         </table>
       </div>
+
+      {showPagination ? (
+        <Pagination
+          className="mt-4"
+          page={page}
+          pageCount={meta.pageCount}
+          total={meta.total}
+          pageSize={meta.pageSize}
+          onPageChange={setPage}
+          disabled={loading}
+        />
+      ) : null}
     </div>
   );
 }

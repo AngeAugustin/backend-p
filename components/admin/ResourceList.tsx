@@ -7,6 +7,11 @@ import { adminFetch } from "@/lib/admin-client";
 import type { ResourceConfig } from "@/lib/admin-resources";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
 import { DuplicateResourceButton } from "@/components/admin/DuplicateResourceButton";
+import {
+  DEFAULT_ADMIN_PAGE_SIZE,
+  Pagination,
+  useClientPagination,
+} from "@/components/admin/Pagination";
 import { PageHeader } from "@/components/admin/PageHeader";
 import { cn } from "@/lib/utils";
 
@@ -65,6 +70,12 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
     : "";
   const showViews = resource.key === "articles";
   const colSpan = showViews ? 5 : 4;
+
+  const { page, setPage, pageItems, meta, showPagination } = useClientPagination(
+    rows,
+    DEFAULT_ADMIN_PAGE_SIZE,
+    `${resource.key}:${locale}`
+  );
 
   return (
     <div>
@@ -147,7 +158,7 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
                 </td>
               </tr>
             ) : (
-              rows.map((row) => (
+              pageItems.map((row) => (
                 <tr
                   key={row.id}
                   className="border-t border-border/70 transition hover:bg-accent/40"
@@ -243,6 +254,18 @@ export function ResourceList({ resource }: { resource: ResourceConfig }) {
           </tbody>
         </table>
       </div>
+
+      {showPagination ? (
+        <Pagination
+          className="mt-4"
+          page={page}
+          pageCount={meta.pageCount}
+          total={meta.total}
+          pageSize={meta.pageSize}
+          onPageChange={setPage}
+          disabled={loading}
+        />
+      ) : null}
     </div>
   );
 }

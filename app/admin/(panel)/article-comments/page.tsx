@@ -11,6 +11,11 @@ import {
 } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import { ConfirmModal } from "@/components/admin/ConfirmModal";
+import {
+  DEFAULT_ADMIN_PAGE_SIZE,
+  Pagination,
+  useClientPagination,
+} from "@/components/admin/Pagination";
 import { cn } from "@/lib/utils";
 
 type CommentStatus = "pending" | "approved" | "rejected";
@@ -111,6 +116,12 @@ export default function ArticleCommentsPage() {
         );
       });
   }, [rows, folder, query]);
+
+  const { page, setPage, pageItems, meta, showPagination } = useClientPagination(
+    visible,
+    DEFAULT_ADMIN_PAGE_SIZE,
+    `${folder}:${query}`
+  );
 
   async function setStatus(id: string, status: CommentStatus) {
     setBusyId(id);
@@ -227,74 +238,89 @@ export default function ArticleCommentsPage() {
           </p>
         </div>
       ) : (
-        <ul className="space-y-3">
-          {visible.map((comment) => {
-            const busy = busyId === comment.id;
-            return (
-              <li
-                key={comment.id}
-                className="rounded-2xl border border-border bg-card p-5 shadow-sm"
-              >
-                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <p className="font-medium text-foreground">
-                        {comment.authorName}
+        <>
+          <ul className="space-y-3">
+            {pageItems.map((comment) => {
+              const busy = busyId === comment.id;
+              return (
+                <li
+                  key={comment.id}
+                  className="rounded-2xl border border-border bg-card p-5 shadow-sm"
+                >
+                  <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div className="min-w-0 flex-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <p className="font-medium text-foreground">
+                          {comment.authorName}
+                        </p>
+                        {comment.authorEmail ? (
+                          <span className="text-xs text-muted-foreground">
+                            {comment.authorEmail}
+                          </span>
+                        ) : null}
+                        <StatusBadge status={comment.status} />
+                      </div>
+                      <p className="mt-1 text-xs text-muted-foreground">
+                        {comment.article.title} ·{" "}
+                        {comment.article.locale.toUpperCase()} ·{" "}
+                        {formatDate(comment.createdAt)}
                       </p>
-                      {comment.authorEmail ? (
-                        <span className="text-xs text-muted-foreground">
-                          {comment.authorEmail}
-                        </span>
-                      ) : null}
-                      <StatusBadge status={comment.status} />
+                      <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">
+                        {preview(comment.body, 400)}
+                      </p>
                     </div>
-                    <p className="mt-1 text-xs text-muted-foreground">
-                      {comment.article.title} · {comment.article.locale.toUpperCase()} ·{" "}
-                      {formatDate(comment.createdAt)}
-                    </p>
-                    <p className="mt-3 whitespace-pre-wrap text-sm leading-relaxed text-foreground/90">
-                      {preview(comment.body, 400)}
-                    </p>
-                  </div>
 
-                  <div className="flex shrink-0 flex-wrap gap-2">
-                    {comment.status !== "approved" ? (
+                    <div className="flex shrink-0 flex-wrap gap-2">
+                      {comment.status !== "approved" ? (
+                        <button
+                          type="button"
+                          disabled={busy}
+                          onClick={() => void setStatus(comment.id, "approved")}
+                          className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-emerald-700 disabled:opacity-50"
+                        >
+                          <Check className="size-3.5" />
+                          Approuver
+                        </button>
+                      ) : null}
+                      {comment.status !== "rejected" ? (
+                        <button
+                          type="button"
+                          disabled={busy}
+                          onClick={() => void setStatus(comment.id, "rejected")}
+                          className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-foreground transition hover:bg-secondary/80 disabled:opacity-50"
+                        >
+                          <X className="size-3.5" />
+                          Rejeter
+                        </button>
+                      ) : null}
                       <button
                         type="button"
                         disabled={busy}
-                        onClick={() => void setStatus(comment.id, "approved")}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-emerald-600 px-3 py-1.5 text-xs font-medium text-white transition hover:bg-emerald-700 disabled:opacity-50"
+                        onClick={() => setDeleteTarget(comment)}
+                        className="inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-3 py-1.5 text-xs font-medium text-destructive transition hover:bg-destructive/15 disabled:opacity-50"
                       >
-                        <Check className="size-3.5" />
-                        Approuver
+                        <Trash2 className="size-3.5" />
+                        Supprimer
                       </button>
-                    ) : null}
-                    {comment.status !== "rejected" ? (
-                      <button
-                        type="button"
-                        disabled={busy}
-                        onClick={() => void setStatus(comment.id, "rejected")}
-                        className="inline-flex items-center gap-1.5 rounded-full bg-secondary px-3 py-1.5 text-xs font-medium text-foreground transition hover:bg-secondary/80 disabled:opacity-50"
-                      >
-                        <X className="size-3.5" />
-                        Rejeter
-                      </button>
-                    ) : null}
-                    <button
-                      type="button"
-                      disabled={busy}
-                      onClick={() => setDeleteTarget(comment)}
-                      className="inline-flex items-center gap-1.5 rounded-full bg-destructive/10 px-3 py-1.5 text-xs font-medium text-destructive transition hover:bg-destructive/15 disabled:opacity-50"
-                    >
-                      <Trash2 className="size-3.5" />
-                      Supprimer
-                    </button>
+                    </div>
                   </div>
-                </div>
-              </li>
-            );
-          })}
-        </ul>
+                </li>
+              );
+            })}
+          </ul>
+
+          {showPagination ? (
+            <Pagination
+              className="mt-4"
+              page={page}
+              pageCount={meta.pageCount}
+              total={meta.total}
+              pageSize={meta.pageSize}
+              onPageChange={setPage}
+              disabled={loading}
+            />
+          ) : null}
+        </>
       )}
     </div>
   );
