@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "accounting-ai"
-title: "Gestion de bilan comptable avec IA - LuxAIIT"
+title: "Gestion de bilan comptable avec IA — LuxAIIT"
 description: "Application web d’analyse de bilans comptables avec génération automatique, dashboards et explications LLM."
 category: "ai"
 featured: true
@@ -15,7 +15,7 @@ stack:
   - "LLM"
 image: "/images/projects/agent-orchestrator.svg"
 ---
-# Gestion de bilan comptable avec IA - LuxAIIT
+# Gestion de bilan comptable avec IA — LuxAIIT
 
 Application web d’analyse de bilans comptables avec génération automatique, dashboards et explications LLM.
 

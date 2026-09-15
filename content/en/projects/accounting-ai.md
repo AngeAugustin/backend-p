@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "accounting-ai"
-title: "AI Accounting Balance Management - LuxAIIT"
+title: "AI Accounting Balance Management — LuxAIIT"
 description: "Web app for accounting balance analysis with automatic generation, dashboards, and LLM-powered explanations."
 category: "ai"
 featured: true
@@ -15,7 +15,7 @@ stack:
   - "LLM"
 image: "/images/projects/agent-orchestrator.svg"
 ---
-# AI Accounting Balance Management - LuxAIIT
+# AI Accounting Balance Management — LuxAIIT
 
 Web app for accounting balance analysis with automatic generation, dashboards, and LLM-powered explanations.
 

@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "grc-landing"
-title: "GRC SaaS Landing Page - Govern Group"
+title: "GRC SaaS Landing Page — Govern Group"
 description: "Marketing site for the GRC SaaS presenting features, roadmap, and an AI conversational assistant."
 category: "web"
 featured: false
@@ -15,7 +15,7 @@ stack:
   - "Intelligence Artificielle"
 image: "/images/projects/agri-dashboard.svg"
 ---
-# GRC SaaS Landing Page - Govern Group
+# GRC SaaS Landing Page — Govern Group
 
 Marketing site for the GRC SaaS presenting features, roadmap, and an AI conversational assistant.
 

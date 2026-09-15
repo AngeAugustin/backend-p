@@ -56,6 +56,8 @@ model Article {
   createdAt   DateTime  @default(now())
   updatedAt   DateTime  @updatedAt
   views       ArticleView[]
+  likes       ArticleLike[]
+  comments    ArticleComment[]
 
   @@unique([slug, locale])
   @@index([locale, publishedAt])
@@ -77,6 +79,33 @@ model ArticleView {
   @@index([articleId, createdAt])
   @@index([articleId, country])
   @@index([articleId, city])
+}
+
+model ArticleLike {
+  id          String   @id @default(cuid())
+  articleId   String
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  visitorHash String
+  createdAt   DateTime @default(now())
+
+  @@unique([articleId, visitorHash])
+  @@index([articleId])
+}
+
+model ArticleComment {
+  id          String   @id @default(cuid())
+  articleId   String
+  article     Article  @relation(fields: [articleId], references: [id], onDelete: Cascade)
+  authorName  String
+  authorEmail String?
+  body        String
+  status      String   @default("pending")
+  visitorHash String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@index([articleId, status, createdAt])
+  @@index([status, createdAt])
 }
 
 model Service {

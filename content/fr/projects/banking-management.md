@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "banking-management"
-title: "Application web de gestion bancaire - Freelance"
+title: "Application web de gestion bancaire — Freelance"
 description: "Simulateur de plateforme bancaire avec architecture frontend/backend structurée et modélisation UML."
 category: "web"
 featured: false
@@ -15,7 +15,7 @@ stack:
   - "API REST"
 image: "/images/projects/benin-pay-api.svg"
 ---
-# Application web de gestion bancaire - Freelance
+# Application web de gestion bancaire — Freelance
 
 Simulateur de plateforme bancaire avec architecture frontend/backend structurée et modélisation UML.
 

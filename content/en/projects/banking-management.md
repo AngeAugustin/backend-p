@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "banking-management"
-title: "Banking Management Web App - Freelance"
+title: "Banking Management Web App — Freelance"
 description: "Banking platform simulator with a structured frontend/backend architecture and UML modeling."
 category: "web"
 featured: false
@@ -15,7 +15,7 @@ stack:
   - "API REST"
 image: "/images/projects/benin-pay-api.svg"
 ---
-# Banking Management Web App - Freelance
+# Banking Management Web App — Freelance
 
 Banking platform simulator with a structured frontend/backend architecture and UML modeling.
 

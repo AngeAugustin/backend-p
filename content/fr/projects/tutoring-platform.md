@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "tutoring-platform"
-title: "Plateforme de gestion du tutorat - Freelance Bénin"
+title: "Plateforme de gestion du tutorat — Freelance Bénin"
 description: "Application web et mobile permettant aux parents de rechercher et d’engager des tuteurs pour leurs enfants."
 category: "saas"
 featured: true
@@ -16,7 +16,7 @@ stack:
 image: "/images/projects/neural-commerce.svg"
 liveUrl: "https://play.google.com/store"
 ---
-# Plateforme de gestion du tutorat - Freelance Bénin
+# Plateforme de gestion du tutorat — Freelance Bénin
 
 Application web et mobile permettant aux parents de rechercher et d’engager des tuteurs pour leurs enfants.
 

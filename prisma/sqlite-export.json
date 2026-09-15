@@ -11,10 +11,10 @@
   ],
   "projects": [
     {
-      "id": "cmskpiito0001vimsdptz3qci",
+      "id": "proj_cnss-pension-tracking_fr",
       "locale": "fr",
       "slug": "cnss-pension-tracking",
-      "title": "Suivi des dossiers de pension - CNSS Bénin",
+      "title": "Suivi des dossiers de pension — CNSS Bénin",
       "description": "Application web de suivi des dossiers de pension à la CNSS Bénin, avec architecture frontend/backend et API REST.",
       "caseStudy": "Développement d'une application web dédiée au suivi des dossiers de pension à la CNSS Bénin. Le projet couvre l'analyse et la modélisation UML, la conception de l'interface frontend avec React JS ainsi que le développement du backend avec PHP Symfony 6.\n\nL'application repose sur une architecture frontend/backend connectée via une API REST et intègre une base de données MySQL pour assurer la gestion et le suivi des informations relatives aux dossiers de pension.",
       "category": "web",
@@ -26,14 +26,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.645Z",
-      "updatedAt": "2026-08-08T18:28:13.645Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiitz0002vimsmvzcq3pc",
+      "id": "proj_cnss-pension-tracking_en",
       "locale": "en",
       "slug": "cnss-pension-tracking",
-      "title": "Pension Case Tracking - CNSS Benin",
+      "title": "Pension Case Tracking — CNSS Benin",
       "description": "Web application for tracking pension cases at CNSS Benin, with a frontend/backend architecture and REST API.",
       "caseStudy": "Development of a web application dedicated to tracking pension cases at CNSS Benin. The project covers UML analysis and modeling, frontend interface design with React JS, and backend development with PHP Symfony 6.\n\nThe application relies on a frontend/backend architecture connected via a REST API and integrates a MySQL database to manage and track pension case information.",
       "category": "web",
@@ -45,14 +45,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.655Z",
-      "updatedAt": "2026-08-08T18:28:13.655Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiu60003vimsp4wkxvm1",
+      "id": "proj_tutoring-platform_fr",
       "locale": "fr",
       "slug": "tutoring-platform",
-      "title": "Plateforme de gestion du tutorat - Freelance Bénin",
+      "title": "Plateforme de gestion du tutorat — Freelance Bénin",
       "description": "Application web et mobile permettant aux parents de rechercher et d’engager des tuteurs pour leurs enfants.",
       "caseStudy": "Conception et développement d'une plateforme web et mobile de gestion du tutorat permettant aux parents de rechercher et d'engager des tuteurs à temps plein ou de manière ponctuelle pour leurs enfants.\n\nLe projet comprend le développement du frontend avec React JS et React Native, ainsi que du backend avec PHP Symfony 6. Les interfaces communiquent via une API REST, avec MySQL pour la gestion des données.\n\nUne version de test de l'application mobile a été déployée sur le Play Store. Le frontend web a été déployé sur Vercel et le backend sur un VPS Hostinger.",
       "category": "saas",
@@ -64,14 +64,14 @@
       "liveUrl": "https://play.google.com/store",
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.662Z",
-      "updatedAt": "2026-08-08T18:28:13.662Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiug0004vims7lboa7mr",
+      "id": "proj_tutoring-platform_en",
       "locale": "en",
       "slug": "tutoring-platform",
-      "title": "Tutoring Management Platform - Freelance Benin",
+      "title": "Tutoring Management Platform — Freelance Benin",
       "description": "Web and mobile platform helping parents find and hire full-time or on-demand tutors for their children.",
       "caseStudy": "Design and development of a web and mobile tutoring management platform that helps parents find and hire full-time or on-demand tutors for their children.\n\nThe project includes a React JS and React Native frontend, and a PHP Symfony 6 backend. Interfaces communicate through a REST API, with MySQL for data management.\n\nA test version of the mobile app was deployed on the Play Store. The web frontend was deployed on Vercel and the backend on a Hostinger VPS.",
       "category": "saas",
@@ -83,14 +83,14 @@
       "liveUrl": "https://play.google.com/store",
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.672Z",
-      "updatedAt": "2026-08-08T18:28:13.672Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiium0005vims0ykc7kpa",
+      "id": "proj_packaging-crm_fr",
       "locale": "fr",
       "slug": "packaging-crm",
-      "title": "CRM de gestion des ventes de packaging - Freelance Bénin",
+      "title": "CRM de gestion des ventes de packaging — Freelance Bénin",
       "description": "CRM web pour centraliser ventes, rendez-vous, livraisons, support client et suivi commercial, aussi packagé en desktop Electron.",
       "caseStudy": "Développement d'une application web CRM dédiée à la gestion des ventes de packaging. La solution permet à l'entreprise de centraliser la gestion de ses ventes, l'historique des transactions, les rendez-vous clients, la programmation des livraisons, le support client et le suivi commercial.\n\nL'application a été développée avec React JS pour le frontend et Symfony 6 pour le backend, avec une communication via API REST et une base PostgreSQL.\n\nLe projet comprend également le packaging de l'application web en application desktop avec Electron JS, ainsi que son déploiement sur Vercel et VPS Hostinger.",
       "category": "saas",
@@ -102,14 +102,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.678Z",
-      "updatedAt": "2026-08-08T18:28:13.678Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiuw0006vimsjnzxr1bq",
+      "id": "proj_packaging-crm_en",
       "locale": "en",
       "slug": "packaging-crm",
-      "title": "Packaging Sales CRM - Freelance Benin",
+      "title": "Packaging Sales CRM — Freelance Benin",
       "description": "Web CRM to centralize sales, appointments, deliveries, support, and commercial follow-up, also packaged as an Electron desktop app.",
       "caseStudy": "Development of a web CRM dedicated to packaging sales management. The solution helps the company centralize sales, transaction history, client appointments, delivery scheduling, customer support, and commercial follow-up.\n\nBuilt with React JS on the frontend and Symfony 6 on the backend, communicating via a REST API with a PostgreSQL database.\n\nThe project also includes packaging the web app as a desktop application with Electron JS, plus deployment on Vercel and a Hostinger VPS.",
       "category": "saas",
@@ -121,14 +121,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.688Z",
-      "updatedAt": "2026-08-08T18:28:13.688Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiv20007vims98f28jpo",
+      "id": "proj_banking-management_fr",
       "locale": "fr",
       "slug": "banking-management",
-      "title": "Application web de gestion bancaire - Freelance",
+      "title": "Application web de gestion bancaire — Freelance",
       "description": "Simulateur de plateforme bancaire avec architecture frontend/backend structurée et modélisation UML.",
       "caseStudy": "Conception et développement d'une application web de gestion bancaire destinée à simuler les principales fonctionnalités d'une plateforme bancaire.\n\nLe frontend a été développé avec React JS tandis que le backend repose sur Nest JS et Node JS. Les composants communiquent via une API REST et les données sont stockées dans MySQL.\n\nLe projet comprend également l'analyse et la modélisation UML ainsi que la mise en place d'une architecture frontend/backend structurée.",
       "category": "web",
@@ -140,14 +140,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.695Z",
-      "updatedAt": "2026-08-08T18:28:13.695Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiivc0008vimst5seszkh",
+      "id": "proj_banking-management_en",
       "locale": "en",
       "slug": "banking-management",
-      "title": "Banking Management Web App - Freelance",
+      "title": "Banking Management Web App — Freelance",
       "description": "Banking platform simulator with a structured frontend/backend architecture and UML modeling.",
       "caseStudy": "Design and development of a banking management web application that simulates the main features of a banking platform.\n\nThe frontend was built with React JS while the backend relies on Nest JS and Node JS. Components communicate through a REST API, with data stored in MySQL.\n\nThe project also includes UML analysis and modeling, plus a structured frontend/backend architecture.",
       "category": "web",
@@ -159,14 +159,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.704Z",
-      "updatedAt": "2026-08-08T18:28:13.704Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiivj0009vimswr3r8b0v",
+      "id": "proj_accounting-ai_fr",
       "locale": "fr",
       "slug": "accounting-ai",
-      "title": "Gestion de bilan comptable avec IA - LuxAIIT",
+      "title": "Gestion de bilan comptable avec IA — LuxAIIT",
       "description": "Application web d’analyse de bilans comptables avec génération automatique, dashboards et explications LLM.",
       "caseStudy": "Développement d'une application web de gestion et d'analyse de bilans comptables intégrant l'intelligence artificielle.\n\nLa solution permet, à partir du bilan comptable annuel, d'établir automatiquement les feuilles maîtresses et le résultat de l'année. Elle propose également des tableaux de bord interactifs ainsi que des explications détaillées pour faciliter l'analyse des résultats.\n\nDéveloppée avec React JS, Django et PostgreSQL, elle intègre une couche IA basée sur les LLM. Le projet a été entièrement déployé sur Contabo.",
       "category": "ai",
@@ -178,14 +178,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.711Z",
-      "updatedAt": "2026-08-08T18:28:13.711Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiivs000avimsnhy9nnj3",
+      "id": "proj_accounting-ai_en",
       "locale": "en",
       "slug": "accounting-ai",
-      "title": "AI Accounting Balance Management - LuxAIIT",
+      "title": "AI Accounting Balance Management — LuxAIIT",
       "description": "Web app for accounting balance analysis with automatic generation, dashboards, and LLM-powered explanations.",
       "caseStudy": "Development of a web application for managing and analyzing accounting balances with artificial intelligence.\n\nFrom an annual accounting balance, the solution automatically builds master sheets and yearly results. It also provides interactive dashboards and detailed explanations to support analysis.\n\nBuilt with React JS, Django, and PostgreSQL, it integrates an LLM-based AI layer. The project was fully deployed on Contabo.",
       "category": "ai",
@@ -197,14 +197,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.721Z",
-      "updatedAt": "2026-08-08T18:28:13.721Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiw0000bvimsasyvc4jc",
+      "id": "proj_connectors-audit-ai_fr",
       "locale": "fr",
       "slug": "connectors-audit-ai",
-      "title": "Connecteurs et audit avec IA - LuxAIIT",
+      "title": "Connecteurs et audit avec IA — LuxAIIT",
       "description": "Plateforme de connecteurs pour auditer bases, APIs REST/SOAP, e-mails et serveurs, enrichie par des LLM.",
       "caseStudy": "Conception et développement d'une plateforme web de connecteurs permettant d'interagir avec différentes sources de données et systèmes informatiques.\n\nLe framework permet de se connecter à des bases de données, des API REST et SOAP, des services d'e-mails et différents serveurs afin de récupérer des informations spécifiques et de réaliser des audits techniques et fonctionnels.\n\nLa solution analyse notamment l'historique des connexions, les privilèges, les changements structurels, les conflits détectés ainsi que certaines vulnérabilités. Elle repose sur React JS, Django, PostgreSQL, Redis et une couche d'IA générative.",
       "category": "ai",
@@ -216,16 +216,16 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.728Z",
-      "updatedAt": "2026-08-08T18:28:13.728Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiw9000cvimsz1n5fuhc",
+      "id": "proj_connectors-audit-ai_en",
       "locale": "en",
       "slug": "connectors-audit-ai",
-      "title": "Connectors & AI Audit Platform - LuxAIIT",
+      "title": "Connectors & AI Audit Platform — LuxAIIT",
       "description": "Connector platform to audit databases, REST/SOAP APIs, email services, and servers, enriched with LLMs.",
-      "caseStudy": "Design and development of a web connector platform to interact with heterogeneous data sources and IT systems.\n\nThe framework connects to databases, REST and SOAP APIs, email services, and servers to retrieve specific information and perform technical and functional audits.\n\nIt analyzes connection history, privileges, structural changes, detected conflicts, and certain vulnerabilities. Built with React JS, Django, PostgreSQL, Redis, and a generative AI layer.",
+      "caseStudy": "Design and development of a connector web platform to interact with different data sources and IT systems.\n\nThe framework connects to databases, REST and SOAP APIs, email services, and various servers to collect specific information and run technical and functional audits.\n\nIt analyzes connection history, privileges, structural changes, detected conflicts, and some vulnerabilities. Built with React JS, Django, PostgreSQL, Redis, and a generative AI layer.",
       "category": "ai",
       "featured": true,
       "year": "2024",
@@ -235,14 +235,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.737Z",
-      "updatedAt": "2026-08-08T18:28:13.737Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiwg000dvimscgmz3eu6",
+      "id": "proj_dncf-personnel-transfers_fr",
       "locale": "fr",
       "slug": "dncf-personnel-transfers",
-      "title": "Gestion des mutations de personnel - DNCF Bénin",
+      "title": "Gestion des mutations de personnel — DNCF Bénin",
       "description": "Application web pour gérer les mutations de personnel de bout en bout à la Direction Nationale du Contrôle Financier.",
       "caseStudy": "Développement d'une application web de gestion des mutations de personnel destinée à la Direction Nationale du Contrôle Financier du Bénin.\n\nLa plateforme a été conçue pour permettre la gestion des mutations de personnel de bout en bout, depuis leur traitement jusqu'à leur suivi.\n\nLe projet comprend l'analyse et la modélisation UML, le développement fullstack avec Next.js et la gestion des données avec MongoDB. Une version de test a été déployée sur Vercel.",
       "category": "web",
@@ -254,14 +254,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.744Z",
-      "updatedAt": "2026-08-08T18:28:13.744Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiwp000evimsxh2zync2",
+      "id": "proj_dncf-personnel-transfers_en",
       "locale": "en",
       "slug": "dncf-personnel-transfers",
-      "title": "Personnel Transfer Management - DNCF Benin",
+      "title": "Personnel Transfer Management — DNCF Benin",
       "description": "Web application to manage personnel transfers end to end at the National Directorate of Financial Control.",
       "caseStudy": "Development of a personnel transfer management web application for Benin’s National Directorate of Financial Control.\n\nThe platform was designed to manage transfers end to end, from processing through follow-up.\n\nThe project includes UML analysis and modeling, fullstack development with Next.js, and data management with MongoDB. A test version was deployed on Vercel.",
       "category": "web",
@@ -273,14 +273,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.753Z",
-      "updatedAt": "2026-08-08T18:28:13.753Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiww000fvims1kaoe0zc",
+      "id": "proj_dncf-committees-projects_fr",
       "locale": "fr",
       "slug": "dncf-committees-projects",
-      "title": "Gestion des comités et suivi des projets - DNCF Bénin",
+      "title": "Gestion des comités et suivi des projets — DNCF Bénin",
       "description": "Plateforme de centralisation des comités de gestion et du suivi des projets à la DNCF.",
       "caseStudy": "Conception et développement d'une application web destinée à la gestion des comités de gestion et de suivi des projets de la Direction Nationale du Contrôle Financier du Bénin.\n\nLa solution permet de centraliser la gestion des différents comités et d'améliorer le suivi des projets associés.\n\nLe développement comprend l'analyse et la modélisation UML, la conception fullstack avec Next.js et la gestion des données avec MongoDB. Une version de test a été déployée sur Vercel.",
       "category": "dashboard",
@@ -292,14 +292,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.761Z",
-      "updatedAt": "2026-08-08T18:28:13.761Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiix7000gvims6yfmexky",
+      "id": "proj_dncf-committees-projects_en",
       "locale": "en",
       "slug": "dncf-committees-projects",
-      "title": "Committees & Project Tracking - DNCF Benin",
+      "title": "Committees & Project Tracking — DNCF Benin",
       "description": "Platform to centralize management committees and project follow-up at DNCF.",
       "caseStudy": "Design and development of a web application for managing committees and tracking projects at Benin’s National Directorate of Financial Control.\n\nThe solution centralizes committee management and improves follow-up on related projects.\n\nDevelopment includes UML analysis and modeling, fullstack design with Next.js, and MongoDB data management. A test version was deployed on Vercel.",
       "category": "dashboard",
@@ -311,14 +311,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.771Z",
-      "updatedAt": "2026-08-08T18:28:13.771Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiixe000hvimsl0afvx5c",
+      "id": "proj_sigfip-dgb_fr",
       "locale": "fr",
       "slug": "sigfip-dgb",
-      "title": "Participation au projet SIGFIP - DGB Bénin / GIZ",
+      "title": "Participation au projet SIGFIP — DGB Bénin / GIZ",
       "description": "Contribution à la refonte du périmètre DGB du SIGFIP, avec focus interopérabilité et X-ROAD.",
       "caseStudy": "Participation au projet SIGFIP de la Direction Générale du Budget du Bénin, dans le cadre de la refonte du périmètre DGB du Système d'Information de Gestion des Finances Publiques.\n\nLe projet vise notamment la redigitalisation du système d'information et l'amélioration de son interopérabilité avec le Ministère du Cadre de Vie.\n\nTechnologies : Java 8u202, WildFly, MyBatis, SpringMVC, Log4j et Oracle 12, avec interopérabilité via X-ROAD.",
       "category": "api",
@@ -330,14 +330,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.778Z",
-      "updatedAt": "2026-08-08T18:28:13.778Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiixp000ivims2b5uk0av",
+      "id": "proj_sigfip-dgb_en",
       "locale": "en",
       "slug": "sigfip-dgb",
-      "title": "SIGFIP Project Contribution - DGB Benin / GIZ",
+      "title": "SIGFIP Project Contribution — DGB Benin / GIZ",
       "description": "Contribution to the DGB scope redesign of SIGFIP, with a focus on interoperability and X-ROAD.",
       "caseStudy": "Contribution to the SIGFIP project at Benin’s General Directorate of Budget, as part of redesigning the DGB scope of the Public Finance Management Information System.\n\nThe project aims to redigitize the information system and improve interoperability with the Ministry of Living Environment.\n\nTechnologies include Java 8u202, WildFly, MyBatis, SpringMVC, Log4j, and Oracle 12, with interoperability through X-ROAD.",
       "category": "api",
@@ -349,14 +349,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.789Z",
-      "updatedAt": "2026-08-08T18:28:13.789Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiixu000jvimskwtwlbad",
+      "id": "proj_grc-saas_fr",
       "locale": "fr",
       "slug": "grc-saas",
-      "title": "SaaS Gouvernance, Risques et Conformité (GRC) - Govern Group",
+      "title": "SaaS Gouvernance, Risques et Conformité (GRC) — Govern Group",
       "description": "SaaS GRC couvrant normes, obligations CEDEAO-CEMAC, LCB-FT-FP et gestion des risques, avec assistance IA.",
       "caseStudy": "Développement d'un SaaS de Gouvernance, Risques et Conformité (GRC) destiné à accompagner les entreprises dans la gestion de leur gouvernance, de leurs risques et de leurs obligations réglementaires.\n\nLa plateforme couvre notamment les normes et standards, les obligations réglementaires CEDEAO-CEMAC, la lutte contre la corruption, la LCB-FT-FP, ainsi que la gestion des risques.\n\nFrontend Vite/TypeScript avec Tailwind CSS et Shadcn UI, et fonctionnalités d'IA pour l'orientation, l'assistance, la recommandation et l'automatisation.",
       "category": "saas",
@@ -368,14 +368,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.795Z",
-      "updatedAt": "2026-08-08T18:28:13.795Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiy3000kvimsab0k5e5g",
+      "id": "proj_grc-saas_en",
       "locale": "en",
       "slug": "grc-saas",
-      "title": "Governance, Risk & Compliance SaaS - Govern Group",
+      "title": "Governance, Risk & Compliance SaaS — Govern Group",
       "description": "GRC SaaS covering standards, ECOWAS-CEMAC obligations, AML/CFT, and risk management, with AI assistance.",
       "caseStudy": "Development of a Governance, Risk & Compliance (GRC) SaaS to help companies manage governance, risks, and regulatory obligations.\n\nThe platform covers standards, ECOWAS-CEMAC regulatory obligations, anti-corruption, AML/CFT/PF, and risk management.\n\nFrontend built with Vite/TypeScript, Tailwind CSS, and Shadcn UI, plus AI features for guidance, assistance, recommendations, and automation.",
       "category": "saas",
@@ -387,14 +387,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.803Z",
-      "updatedAt": "2026-08-08T18:28:13.803Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiyb000lvimsjs0ytgi3",
+      "id": "proj_aml-detection_fr",
       "locale": "fr",
       "slug": "aml-detection",
-      "title": "Système AML de détection des transactions suspectes - Govern Group",
+      "title": "Système AML de détection des transactions suspectes — Govern Group",
       "description": "Moteur AML en Machine Learning pour détecter des schémas suspects dans les flux d’un Core Banking.",
       "caseStudy": "Développement d'un système AML (Anti-Money Laundering) de lutte contre le blanchiment d'argent, conçu pour analyser les flux de transactions bancaires provenant d'un Core Banking.\n\nLe système utilise des techniques de Machine Learning afin d'identifier des schémas de transactions suspectes pouvant être associés au blanchiment d'argent ou au financement du terrorisme.\n\nSolution développée en Python et exposée via une API REST pour intégration au SaaS GRC, notamment au module LCB-FT-FP.",
       "category": "ai",
@@ -406,16 +406,16 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.811Z",
-      "updatedAt": "2026-08-08T18:28:13.811Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiyk000mvims64mi7rwy",
+      "id": "proj_aml-detection_en",
       "locale": "en",
       "slug": "aml-detection",
-      "title": "AML Suspicious Transaction Detection - Govern Group",
+      "title": "AML Suspicious Transaction Detection — Govern Group",
       "description": "Machine Learning AML engine to detect suspicious patterns in Core Banking transaction flows.",
-      "caseStudy": "Development of an Anti-Money Laundering (AML) system designed to analyze banking transaction flows from a Core Banking system.\n\nIt uses Machine Learning techniques to identify suspicious transaction patterns that may be linked to money laundering or terrorism financing.\n\nBuilt with Python and exposed through a REST API for integration into the GRC SaaS, especially the AML/CFT/PF module.",
+      "caseStudy": "Development of an AML (Anti-Money Laundering) system designed to analyze banking transaction flows from a Core Banking platform.\n\nIt uses Machine Learning to identify suspicious transaction patterns that may be linked to money laundering or terrorist financing.\n\nBuilt in Python and exposed via a REST API for integration into the GRC SaaS, especially the AML/CFT/PF module.",
       "category": "ai",
       "featured": true,
       "year": "2025",
@@ -425,14 +425,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.821Z",
-      "updatedAt": "2026-08-08T18:28:13.821Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiyq000nvimskinbket3",
+      "id": "proj_grc-landing_fr",
       "locale": "fr",
       "slug": "grc-landing",
-      "title": "Landing Page SaaS GRC - Govern Group",
+      "title": "Landing Page SaaS GRC — Govern Group",
       "description": "Site vitrine du SaaS GRC présentant fonctionnalités, roadmap et assistance conversationnelle IA.",
       "caseStudy": "Conception et développement d'une landing page professionnelle pour un SaaS de Gouvernance, Risques et Conformité (GRC).\n\nLe site web vitrine présente le SaaS, ses principales fonctionnalités ainsi que sa roadmap, avec pour objectif une présentation claire et structurée de la solution.\n\nInterface développée avec Vite, TypeScript, Tailwind CSS et Shadcn UI, avec une assistance conversationnelle basée sur l'IA. Une version de test a été déployée sur Vercel.",
       "category": "web",
@@ -444,14 +444,14 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.827Z",
-      "updatedAt": "2026-08-08T18:28:13.827Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     },
     {
-      "id": "cmskpiiyy000ovimswe0v62m0",
+      "id": "proj_grc-landing_en",
       "locale": "en",
       "slug": "grc-landing",
-      "title": "GRC SaaS Landing Page - Govern Group",
+      "title": "GRC SaaS Landing Page — Govern Group",
       "description": "Marketing site for the GRC SaaS presenting features, roadmap, and an AI conversational assistant.",
       "caseStudy": "Design and development of a professional landing page for a Governance, Risk & Compliance (GRC) SaaS.\n\nThe marketing site presents the SaaS, its main features, and its roadmap, with a clear and structured product narrative.\n\nBuilt with Vite, TypeScript, Tailwind CSS, and Shadcn UI, including an AI conversational assistant. A test version was deployed on Vercel.",
       "category": "web",
@@ -463,8 +463,8 @@
       "liveUrl": null,
       "repoUrl": null,
       "publishedAt": "2026-08-08T18:28:13.641Z",
-      "createdAt": "2026-08-08T18:28:13.835Z",
-      "updatedAt": "2026-08-08T18:28:13.835Z"
+      "createdAt": "2026-08-08T18:28:13.641Z",
+      "updatedAt": "2026-08-08T18:28:13.641Z"
     }
   ],
   "articles": [],

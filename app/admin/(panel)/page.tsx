@@ -3,6 +3,7 @@ import {
   BookOpen,
   FolderKanban,
   Mail,
+  MessageSquare,
   Receipt,
   Sparkles,
   type LucideIcon,
@@ -53,6 +54,12 @@ const themes: StatTheme[] = [
     iconBg: "bg-[#ccfbf1]",
     icon: "text-[#0d9488]",
     glow: "bg-[#99f6e4]",
+  },
+  {
+    number: "text-[#7c2d12]",
+    iconBg: "bg-[#ffedd5]",
+    icon: "text-[#c2410c]",
+    glow: "bg-[#fdba74]",
   },
 ];
 
@@ -164,6 +171,7 @@ export default async function AdminDashboardPage() {
     services,
     invoices,
     unreadMessages,
+    pendingComments,
     recentMessages,
   ] = await Promise.all([
       prisma.project.count(),
@@ -172,6 +180,7 @@ export default async function AdminDashboardPage() {
       prisma.service.count(),
       prisma.proformaInvoice.count(),
       prisma.contactMessage.count({ where: { status: "new" } }),
+      prisma.articleComment.count({ where: { status: "pending" } }),
       prisma.contactMessage.findMany({
         where: { createdAt: { gte: since } },
         select: { createdAt: true },
@@ -215,6 +224,13 @@ export default async function AdminDashboardPage() {
       count: unreadMessages,
       icon: Mail,
     },
+    {
+      href: "/admin/article-comments",
+      title: "Commentaires",
+      subtitle: "En attente de modération",
+      count: pendingComments,
+      icon: MessageSquare,
+    },
   ];
 
   const chartData = buildMessagesByMonth(recentMessages, 12);
@@ -232,7 +248,11 @@ export default async function AdminDashboardPage() {
 
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-5">
         {cards.map((card, index) => (
-          <StatCardItem key={card.href} {...card} theme={themes[index]} />
+          <StatCardItem
+            key={card.href}
+            {...card}
+            theme={themes[index % themes.length]!}
+          />
         ))}
       </div>
 

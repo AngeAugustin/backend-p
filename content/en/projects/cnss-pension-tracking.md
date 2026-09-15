@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "cnss-pension-tracking"
-title: "Pension Case Tracking - CNSS Benin"
+title: "Pension Case Tracking — CNSS Benin"
 description: "Web application for tracking pension cases at CNSS Benin, with a frontend/backend architecture and REST API."
 category: "web"
 featured: true
@@ -14,7 +14,7 @@ stack:
   - "API REST"
 image: "/images/projects/dataflow-pipeline.svg"
 ---
-# Pension Case Tracking - CNSS Benin
+# Pension Case Tracking — CNSS Benin
 
 Web application for tracking pension cases at CNSS Benin, with a frontend/backend architecture and REST API.
 

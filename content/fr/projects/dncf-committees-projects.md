@@ -2,7 +2,7 @@
 locale: "fr"
 type: "project"
 slug: "dncf-committees-projects"
-title: "Gestion des comités et suivi des projets - DNCF Bénin"
+title: "Gestion des comités et suivi des projets — DNCF Bénin"
 description: "Plateforme de centralisation des comités de gestion et du suivi des projets à la DNCF."
 category: "dashboard"
 featured: false
@@ -12,7 +12,7 @@ stack:
   - "MongoDB"
 image: "/images/projects/dataflow-pipeline.svg"
 ---
-# Gestion des comités et suivi des projets - DNCF Bénin
+# Gestion des comités et suivi des projets — DNCF Bénin
 
 Plateforme de centralisation des comités de gestion et du suivi des projets à la DNCF.
 

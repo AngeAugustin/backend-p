@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "dncf-personnel-transfers"
-title: "Personnel Transfer Management - DNCF Benin"
+title: "Personnel Transfer Management — DNCF Benin"
 description: "Web application to manage personnel transfers end to end at the National Directorate of Financial Control."
 category: "web"
 featured: false
@@ -12,7 +12,7 @@ stack:
   - "MongoDB"
 image: "/images/projects/agri-dashboard.svg"
 ---
-# Personnel Transfer Management - DNCF Benin
+# Personnel Transfer Management — DNCF Benin
 
 Web application to manage personnel transfers end to end at the National Directorate of Financial Control.
 

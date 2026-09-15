@@ -2,7 +2,7 @@
 locale: "en"
 type: "project"
 slug: "sigfip-dgb"
-title: "SIGFIP Project Contribution - DGB Benin / GIZ"
+title: "SIGFIP Project Contribution — DGB Benin / GIZ"
 description: "Contribution to the DGB scope redesign of SIGFIP, with a focus on interoperability and X-ROAD."
 category: "api"
 featured: true
@@ -16,7 +16,7 @@ stack:
   - "X-ROAD"
 image: "/images/projects/benin-pay-api.svg"
 ---
-# SIGFIP Project Contribution - DGB Benin / GIZ
+# SIGFIP Project Contribution — DGB Benin / GIZ
 
 Contribution to the DGB scope redesign of SIGFIP, with a focus on interoperability and X-ROAD.
 
