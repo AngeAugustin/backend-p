@@ -14,6 +14,7 @@ import {
   AlignLeft,
   AlignRight,
   Bold,
+  CircleHelp,
   Columns2,
   Heading2,
   Heading3,
@@ -37,6 +38,7 @@ import {
   Unlink,
 } from "lucide-react";
 import { adminUpload } from "@/lib/admin-client";
+import { FaqItem } from "@/lib/tiptap-faq";
 import {
   ResizableImage,
   type ImageAlign,
@@ -128,6 +130,7 @@ export function RichTextEditor({
         },
       }),
       ResizableImage,
+      FaqItem,
       ArticleTextAlign,
       TableKit.configure({
         table: {
@@ -268,6 +271,18 @@ export function RichTextEditor({
       .chain()
       .focus()
       .insertTable({ rows: 3, cols: 3, withHeaderRow: true })
+      .run();
+  }
+
+  function insertFaq() {
+    if (!editor) return;
+    editor
+      .chain()
+      .focus()
+      .insertContent({
+        type: "faqItem",
+        attrs: { question: "", answer: "" },
+      })
       .run();
   }
 
@@ -516,6 +531,16 @@ export function RichTextEditor({
           onClick={() => editor.chain().focus().deleteTable().run()}
         >
           <Trash2 className="size-4" />
+        </ToolbarButton>
+
+        <span className="mx-1 h-5 w-px bg-border" />
+
+        <ToolbarButton
+          label="Insérer une FAQ"
+          active={editor.isActive("faqItem")}
+          onClick={insertFaq}
+        >
+          <CircleHelp className="size-4" />
         </ToolbarButton>
       </div>
 

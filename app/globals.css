@@ -96,3 +96,7 @@
   border-radius: 0.75rem;
   box-shadow: inset 0 0 0 1px rgb(255 255 255 / 0.55);
 }
+
+.richtext-editor .faq-node {
+  max-width: 100%;
+}
