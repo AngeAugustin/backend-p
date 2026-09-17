@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useMemo, useRef, useState } from "react";
-import { ArrowLeft } from "lucide-react";
+import { useEffect, useMemo, useRef, useState } from "react";
+import { ArrowLeft, RotateCcw } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import type { FieldConfig, ResourceConfig } from "@/lib/admin-resources";
 import { slugify } from "@/lib/bilingual";
@@ -19,6 +19,41 @@ type Values = Record<string, unknown>;
 
 const fieldClass =
   "w-full rounded-xl border border-input bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition focus:border-ring focus:ring-2 focus:ring-ring/30";
+
+function draftStorageKey(resourceKey: string, id?: string) {
+  return `portfolio-admin-draft:${resourceKey}:${id || "new"}`;
+}
+
+function readDraft(resourceKey: string, id?: string): Values | null {
+  try {
+    const raw = localStorage.getItem(draftStorageKey(resourceKey, id));
+    if (!raw) return null;
+    const parsed = JSON.parse(raw) as { values?: Values };
+    if (!parsed?.values || typeof parsed.values !== "object") return null;
+    return parsed.values;
+  } catch {
+    return null;
+  }
+}
+
+function writeDraft(resourceKey: string, id: string | undefined, values: Values) {
+  try {
+    localStorage.setItem(
+      draftStorageKey(resourceKey, id),
+      JSON.stringify({ values, savedAt: new Date().toISOString() })
+    );
+  } catch {
+    // quota / private mode
+  }
+}
+
+function clearDraft(resourceKey: string, id?: string) {
+  try {
+    localStorage.removeItem(draftStorageKey(resourceKey, id));
+  } catch {
+    // ignore
+  }
+}
 
 function emptyLocalized(): LocalizedString {
   return { fr: "", en: "" };
@@ -215,12 +250,44 @@ export function ResourceForm({
 }) {
   const router = useRouter();
   const bilingual = Boolean(resource.bilingualCreate && !id);
-  const [values, setValues] = useState<Values>(() =>
+  const baselineRef = useRef<Values>(
     defaultsFromResource(resource, initial, bilingual)
   );
+  const [values, setValues] = useState<Values>(() => baselineRef.current);
   const [error, setError] = useState<string | null>(null);
   const [saving, setSaving] = useState(false);
+  const [draftRestored, setDraftRestored] = useState(false);
+  const [hydrated, setHydrated] = useState(false);
+  const [dirty, setDirty] = useState(false);
   const slugManualRef = useRef<SlugManualState>({ fr: false, en: false });
+
+  useEffect(() => {
+    const draft = readDraft(resource.key, id);
+    if (draft) {
+      setValues(draft);
+      setDraftRestored(true);
+      setDirty(true);
+    }
+    setHydrated(true);
+  }, [resource.key, id]);
+
+  useEffect(() => {
+    if (!hydrated || !dirty) return;
+    const timer = window.setTimeout(() => {
+      writeDraft(resource.key, id, values);
+    }, 400);
+    return () => window.clearTimeout(timer);
+  }, [values, hydrated, dirty, resource.key, id]);
+
+  useEffect(() => {
+    if (!dirty) return;
+    const onBeforeUnload = (event: BeforeUnloadEvent) => {
+      event.preventDefault();
+      event.returnValue = "";
+    };
+    window.addEventListener("beforeunload", onBeforeUnload);
+    return () => window.removeEventListener("beforeunload", onBeforeUnload);
+  }, [dirty]);
 
   const title = useMemo(
     () => (id ? `Éditer ${resource.singular}` : `Nouveau ${resource.singular}`),
@@ -251,7 +318,16 @@ export function ResourceForm({
     bilingual && resource.fields.some((field) => field.name === "slug" && field.localized)
   );
 
+  function discardDraft() {
+    clearDraft(resource.key, id);
+    setValues(baselineRef.current);
+    setDraftRestored(false);
+    setDirty(false);
+    setError(null);
+  }
+
   function update(name: string, value: unknown) {
+    setDirty(true);
     setValues((prev) => {
       const next: Values = { ...prev, [name]: value };
 
@@ -346,6 +422,8 @@ export function ResourceForm({
           method: "POST",
           body: JSON.stringify(payload),
         });
+        clearDraft(resource.key, id);
+        setDirty(false);
         router.push(`/admin/${resource.key}`);
       } else {
         const payload: Values = { ...values };
@@ -369,12 +447,16 @@ export function ResourceForm({
             method: "PUT",
             body: JSON.stringify(payload),
           });
+          clearDraft(resource.key, id);
+          setDirty(false);
           router.push(`/admin/${resource.key}/${id}`);
         } else {
           await adminFetch(resource.apiPath, {
             method: "POST",
             body: JSON.stringify(payload),
           });
+          clearDraft(resource.key, id);
+          setDirty(false);
           router.push(`/admin/${resource.key}`);
         }
       }
@@ -414,6 +496,23 @@ export function ResourceForm({
         <p className="mb-4 rounded-xl border border-destructive/20 bg-destructive/5 px-4 py-3 text-sm text-destructive">
           {error}
         </p>
+      ) : null}
+
+      {draftRestored ? (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-xl border border-amber-500/25 bg-amber-50 px-4 py-3 text-sm text-amber-950">
+          <p>
+            Brouillon local restauré (ex. image ajoutée avant refresh). Pense à
+            cliquer sur <strong>Enregistrer</strong> pour le publier en base.
+          </p>
+          <button
+            type="button"
+            onClick={discardDraft}
+            className="inline-flex h-9 items-center gap-1.5 rounded-full border border-amber-600/20 bg-white px-3 text-xs font-medium transition hover:bg-amber-100"
+          >
+            <RotateCcw className="size-3.5" />
+            Ignorer le brouillon
+          </button>
+        </div>
       ) : null}
 
       {bilingual ? (
