@@ -51,8 +51,8 @@ export default function EditInvoicePage() {
     return (
       <div>
         <p className="mb-4 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-          Cette proforma est finalisée et ne peut plus être modifiée. Vous pouvez
-          uniquement la télécharger.
+          Cette proforma est finalisée. Réouvrez-la depuis la fiche pour pouvoir
+          la modifier.
         </p>
         <Link
           href={`/admin/invoices/${id}`}

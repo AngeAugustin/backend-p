@@ -258,8 +258,8 @@ export function InvoiceForm({
     return (
       <div>
         <p className="mb-4 rounded-xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
-          Cette proforma est finalisée et ne peut plus être modifiée. Vous pouvez
-          uniquement la télécharger.
+          Cette proforma est finalisée. Réouvrez-la depuis la fiche pour pouvoir
+          la modifier.
         </p>
         <Link
           href={`/admin/invoices/${id}`}
@@ -275,7 +275,7 @@ export function InvoiceForm({
     <form onSubmit={onSubmit}>
       <PageHeader
         title={id ? `Éditer ${initial?.number || "la proforma"}` : "Nouvelle facture PROFORMA"}
-        description="Enregistrée en brouillon. Une fois finalisée depuis la fiche, elle ne pourra plus être modifiée."
+        description="Enregistrée en brouillon. Une fois finalisée, elle pourra être réouverte depuis la fiche pour modification."
         actions={
           id ? (
             <Link

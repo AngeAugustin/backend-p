@@ -261,6 +261,18 @@ export async function finalizeInvoice(id: string) {
   });
 }
 
+export async function reopenInvoice(id: string) {
+  const existing = await getInvoice(id);
+  if (!existing) return null;
+  if (!isInvoiceFinalized(existing.status)) return existing;
+
+  return prisma.proformaInvoice.update({
+    where: { id },
+    data: { status: "draft" },
+    include: { items: { orderBy: { order: "asc" } } },
+  });
+}
+
 export async function getInvoice(id: string) {
   return prisma.proformaInvoice.findUnique({
     where: { id },

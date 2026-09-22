@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { ArrowLeft, Check, Pencil, Trash2 } from "lucide-react";
+import { ArrowLeft, Check, Pencil, RotateCcw, Trash2 } from "lucide-react";
 import { adminFetch } from "@/lib/admin-client";
 import {
   isInvoiceFinalized,
@@ -23,6 +23,8 @@ export function InvoiceDetail({ id }: { id: string }) {
   const [deleting, setDeleting] = useState(false);
   const [finalizeOpen, setFinalizeOpen] = useState(false);
   const [finalizing, setFinalizing] = useState(false);
+  const [reopenOpen, setReopenOpen] = useState(false);
+  const [reopening, setReopening] = useState(false);
 
   useEffect(() => {
     let cancelled = false;
@@ -81,6 +83,24 @@ export function InvoiceDetail({ id }: { id: string }) {
     }
   }
 
+  async function confirmReopen() {
+    setReopening(true);
+    try {
+      const response = await adminFetch<{ data: SerializedInvoice }>(
+        `/api/admin/invoices/${id}/reopen`,
+        { method: "POST" }
+      );
+      setInvoice(response.data);
+      setReopenOpen(false);
+      router.refresh();
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "Réouverture impossible");
+      setReopenOpen(false);
+    } finally {
+      setReopening(false);
+    }
+  }
+
   if (loading) {
     return <p className="text-sm text-muted-foreground">Chargement…</p>;
   }
@@ -122,7 +142,7 @@ export function InvoiceDetail({ id }: { id: string }) {
       <ConfirmModal
         open={finalizeOpen}
         title="Finaliser cette proforma ?"
-        description="Une fois finalisée, elle ne pourra plus être modifiée. Vous pourrez uniquement la télécharger."
+        description="Une fois finalisée, elle ne pourra plus être modifiée tant qu’elle n’est pas réouverte. Vous pourrez toujours la télécharger."
         confirmLabel="Finaliser"
         cancelLabel="Annuler"
         tone="default"
@@ -130,6 +150,19 @@ export function InvoiceDetail({ id }: { id: string }) {
         onConfirm={() => void confirmFinalize()}
         onCancel={() => {
           if (!finalizing) setFinalizeOpen(false);
+        }}
+      />
+      <ConfirmModal
+        open={reopenOpen}
+        title="Réouvrir cette proforma ?"
+        description="Elle repassera en brouillon et pourra être modifiée. Vous pourrez la finaliser à nouveau ensuite."
+        confirmLabel="Réouvrir"
+        cancelLabel="Annuler"
+        tone="default"
+        loading={reopening}
+        onConfirm={() => void confirmReopen()}
+        onCancel={() => {
+          if (!reopening) setReopenOpen(false);
         }}
       />
 
@@ -150,7 +183,16 @@ export function InvoiceDetail({ id }: { id: string }) {
               Retour
             </Link>
             <InvoiceDownloadButton id={invoice.id} number={invoice.number} />
-            {locked ? null : (
+            {locked ? (
+              <button
+                type="button"
+                onClick={() => setReopenOpen(true)}
+                className="inline-flex h-11 items-center gap-2 rounded-full bg-primary px-5 text-sm font-medium text-primary-foreground transition hover:bg-primary/90"
+              >
+                <RotateCcw className="size-4" />
+                Réouvrir
+              </button>
+            ) : (
               <>
                 <Link
                   href={`/admin/invoices/${invoice.id}/edit`}
