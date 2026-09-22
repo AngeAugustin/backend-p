@@ -3,6 +3,7 @@ import {
   formatMoney,
   type SerializedInvoice,
 } from "@/lib/invoice-shared";
+import { invoicePaymentInfo } from "@/lib/invoice-issuer";
 import { InvoiceStatusBadge } from "@/components/admin/InvoiceStatusBadge";
 
 function lines(values: Array<string | null | undefined>) {
@@ -168,7 +169,33 @@ export function InvoicePreview({ invoice }: { invoice: SerializedInvoice }) {
           </section>
         ) : null}
 
-        <div className="mt-10 flex justify-end">
+        <div className="mt-10 flex flex-wrap items-end justify-between gap-8">
+          <section className="max-w-sm rounded-xl border border-border bg-secondary/70 p-4">
+            <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-glow">
+              Informations de paiement
+            </h3>
+            <div className="mt-2 space-y-1 text-sm text-muted-foreground">
+              <p>
+                Moyen :{" "}
+                <span className="font-semibold text-foreground">
+                  {invoicePaymentInfo.method}
+                </span>
+              </p>
+              <p>
+                Numéro :{" "}
+                <span className="font-semibold text-foreground">
+                  {invoicePaymentInfo.number}
+                </span>
+              </p>
+              <p>
+                Nom :{" "}
+                <span className="font-semibold text-foreground">
+                  {invoicePaymentInfo.accountName}
+                </span>
+              </p>
+            </div>
+          </section>
+
           <div className="w-[160px] text-right">
             <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-muted-foreground">
               Signature

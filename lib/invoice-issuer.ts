@@ -10,6 +10,12 @@ export type InvoiceIssuer = {
   website: string;
 };
 
+export type InvoicePaymentInfo = {
+  method: string;
+  number: string;
+  accountName: string;
+};
+
 export const defaultIssuer: InvoiceIssuer = {
   name: "Augustin FACHEHOUN",
   title: "FullStack & AI Developer",
@@ -20,4 +26,10 @@ export const defaultIssuer: InvoiceIssuer = {
   country: "Bénin",
   ifu: "",
   website: "https://www.augustinfachehoun.pro",
+};
+
+export const invoicePaymentInfo: InvoicePaymentInfo = {
+  method: "MTN Mobile Money",
+  number: "0154053660",
+  accountName: "FACHEHOUN AUGUSTIN MARIE ANGE K.",
 };

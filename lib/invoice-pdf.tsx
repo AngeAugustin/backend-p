@@ -13,6 +13,7 @@ import {
   type SerializedInvoice,
 } from "@/lib/invoice-shared";
 import { getInvoiceSignatureSrc } from "@/lib/invoice-signature";
+import { invoicePaymentInfo } from "@/lib/invoice-issuer";
 
 const colors = {
   forest: "#102c27",
@@ -188,7 +189,6 @@ const styles = StyleSheet.create({
     marginBottom: 6,
   },
   signatureBlock: {
-    marginTop: 22,
     alignItems: "flex-end",
   },
   signatureLabel: {
@@ -208,6 +208,39 @@ const styles = StyleSheet.create({
     fontFamily: "Helvetica-Bold",
     fontSize: 9,
     color: colors.forest,
+  },
+  closingRow: {
+    marginTop: 22,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "flex-end",
+    gap: 16,
+  },
+  paymentBlock: {
+    flex: 1,
+    maxWidth: 280,
+    padding: 12,
+    borderWidth: 1,
+    borderColor: colors.line,
+    borderRadius: 6,
+    backgroundColor: colors.wash,
+  },
+  paymentTitle: {
+    fontFamily: "Helvetica-Bold",
+    fontSize: 8,
+    letterSpacing: 1.2,
+    color: colors.glow,
+    textTransform: "uppercase",
+    marginBottom: 6,
+  },
+  paymentLine: {
+    fontSize: 9,
+    color: colors.muted,
+    lineHeight: 1.45,
+  },
+  paymentValue: {
+    fontFamily: "Helvetica-Bold",
+    color: colors.ink,
   },
   footer: {
     position: "absolute",
@@ -358,12 +391,31 @@ export function InvoicePdfDocument({ invoice }: { invoice: SerializedInvoice }) 
           </View>
         ) : null}
 
-        <View style={styles.signatureBlock} wrap={false}>
-          <Text style={styles.signatureLabel}>Signature</Text>
-          {signatureSrc ? (
-            <Image src={signatureSrc} style={styles.signatureImage} />
-          ) : null}
-          <Text style={styles.signatureName}>{invoice.issuerName}</Text>
+        <View style={styles.closingRow} wrap={false}>
+          <View style={styles.paymentBlock}>
+            <Text style={styles.paymentTitle}>Informations de paiement</Text>
+            <Text style={styles.paymentLine}>
+              Moyen :{" "}
+              <Text style={styles.paymentValue}>{invoicePaymentInfo.method}</Text>
+            </Text>
+            <Text style={styles.paymentLine}>
+              Numéro :{" "}
+              <Text style={styles.paymentValue}>{invoicePaymentInfo.number}</Text>
+            </Text>
+            <Text style={styles.paymentLine}>
+              Nom :{" "}
+              <Text style={styles.paymentValue}>
+                {invoicePaymentInfo.accountName}
+              </Text>
+            </Text>
+          </View>
+          <View style={styles.signatureBlock}>
+            <Text style={styles.signatureLabel}>Signature</Text>
+            {signatureSrc ? (
+              <Image src={signatureSrc} style={styles.signatureImage} />
+            ) : null}
+            <Text style={styles.signatureName}>{invoice.issuerName}</Text>
+          </View>
         </View>
 
         <View style={styles.footer} fixed>
